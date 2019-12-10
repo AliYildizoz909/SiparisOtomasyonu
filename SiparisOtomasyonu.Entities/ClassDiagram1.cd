@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SiparisOtomasyonu.Entities.Entity.Cash" BaseTypeListCollapsed="true">
+    <Position X="9" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Cash.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="SiparisOtomasyonu.Entities.Entity.Check" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQABAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Entity\Check.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.242" />
+  </Class>
+  <Class Name="SiparisOtomasyonu.Entities.Entity.Credit" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAQABAIAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Entity\Credit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SiparisOtomasyonu.Entities.Entity.Customer" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQABAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Customer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SiparisOtomasyonu.Entities.Entity.Item">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAgAAAAgBAAAAAAgAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Entity\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiparisOtomasyonu.Entities.Entity.Order">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAEAAAAAAAAAIAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiparisOtomasyonu.Entities.Entity.OrderDetail" Collapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAASAASAAAAAAAICAAAAAACAAAAAAAAAAkAAAAAA=</HashCode>
+      <FileName>Entity\OrderDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SiparisOtomasyonu.Entities.Entity.Abstract.IEntity">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Abstract\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SiparisOtomasyonu.Entities.Entity.Abstract.IPayment">
+    <Position X="10.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Abstract\IPayment.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SiparisOtomasyonu.Entities.Entity.Enums.Status">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAIAAAAAAAAAUAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Enums\Status.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SiparisOtomasyonu.Entities.Entity.Enums.TaxStatus">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Entity\Enums\TaxStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
