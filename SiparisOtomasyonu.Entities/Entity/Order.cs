@@ -14,8 +14,7 @@ namespace SiparisOtomasyonu.Entities.Entity
         public DateTime Date { get; set; }
         public Status Status { get; set; }
         public int CustomerId { get; set; }
-        public List<OrderDetail> OrderDetails { get; set; }
-        public List<Payment> Payments { get; set; }
-
+        public List<int> OrderDetailIds { get; set; }   
+        public List<int> PaymentIds { get; set; }
     }
 }

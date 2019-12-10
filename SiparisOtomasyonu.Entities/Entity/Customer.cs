@@ -7,10 +7,10 @@ using SiparisOtomasyonu.Entities.Entity.Abstract;
 
 namespace SiparisOtomasyonu.Entities.Entity
 {
-    public class Customer : Abstract.IEntity
+    public class Customer : IEntity
     {
         public int Id { get; set; }
-        //public int Index { get; set; }
+
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Address { get; set; }

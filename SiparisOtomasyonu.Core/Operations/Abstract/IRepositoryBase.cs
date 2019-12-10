@@ -14,9 +14,8 @@ namespace SiparisOtomasyonu.Core.DataAccess.Abstract
         List<T> GetAll();
         List<T> GetByFilter(Expression<Func<T, bool>> filter);
 
-        void Add(T entity);
-        void Delete(int index);
-        void Update(T entity);
+        Result Add(T entity);
+        Result Delete(int index);
         void PathCheck();
     }
 }

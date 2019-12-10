@@ -13,7 +13,7 @@ using SiparisOtomasyonu.Entities.Entity.Enums;
 namespace SiparisOtomasyonu.Core.Operations
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
-        where TEntity : class, new()
+        where TEntity : class
     {
         private PathModel _pathModel;
         public DirectoryHelper _directoryHelper;
@@ -22,6 +22,7 @@ namespace SiparisOtomasyonu.Core.Operations
         public List<TEntity> Entities { get; set; }
         public RepositoryBase(PathModel pathModel)
         {
+           
             _pathModel = pathModel;
             _directoryHelper = new DirectoryHelper(_pathModel.Path, pathModel.DirectoryName);
             _fileHelper = new FileHelper(_pathModel.Path + "\\" + _pathModel.DirectoryName, _pathModel.FileName);
@@ -43,25 +44,26 @@ namespace SiparisOtomasyonu.Core.Operations
             return entity;
         }
 
-        public void Add(TEntity entity)
+        public virtual Result Add(TEntity entity)
         {
+            return UseTryCatch.Use(() =>
+            {
+                Entities.Add(entity);
+                Sync();
+            });
 
-            Entities.Add(entity);
 
         }
 
-        public void Delete(int index)
+        public virtual Result Delete(int index)
         {
-            Entities.RemoveAt(index);
-            Sync();
+            return UseTryCatch.Use(() =>
+            {
+                Entities.RemoveAt(index);
+                Sync();
+            });
         }
 
-        public void Update(TEntity entity)
-        {
-            Entities.Remove(entity);
-            Entities.Add(entity);
-            Sync();
-        }
 
         public void PathCheck()
         {

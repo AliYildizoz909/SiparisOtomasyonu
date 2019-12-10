@@ -9,38 +9,34 @@ using SiparisOtomasyonu.Entities.Entity.Enums;
 
 namespace SiparisOtomasyonu.Core.Operations.Manager
 {
-    public class CustomerManager : RepositoryBase<Customer>
+    public class OrderManager : RepositoryBase<Order>
     {
-        public CustomerManager(PathModel pathModel) : base(pathModel)
+        public OrderManager(PathModel pathModel) : base(pathModel)
         {
-
         }
-        public Customer GetById(int id)
+        public Order GetById(int id)
         {
-            Customer customer = Entities.FirstOrDefault(I => I.Id == id);
-            return customer;
+            Order order = Entities.FirstOrDefault(I => I.Id == id);
+            return order;
         }
-
-        public override Result Add(Customer entity)
+        public override Result Add(Order entity)
         {
             entity.Id = Entities[Entities.Count - 1].Id + 1;
             return base.Add(entity);
         }
-
-        public Result Delete(Customer customer)
+        public Result Delete(Order order)
         {
-            return base.Delete(Entities.FindIndex(I => I.Id == customer.Id));
+            return base.Delete(Entities.FindIndex(I => I.Id == order.Id));
         }
-
-        public Result Update(Customer customer)
+        public Result Update(Order order)
         {
+
             return UseTryCatch.Use(() =>
             {
-                Delete(customer);
-                Entities.Add(customer);
+                Delete(order);
+                Entities.Add(order);
                 Sync();
             });
         }
-
     }
 }

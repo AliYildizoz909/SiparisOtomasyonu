@@ -33,56 +33,62 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnCreate = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dtGridList = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dtGridUDList = new System.Windows.Forms.DataGridView();
-            this.txtUDPassword = new System.Windows.Forms.TextBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.txtUDName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtUDSurname = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtUDAddress = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtUDUserName = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.txtFind = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtOrderId = new System.Windows.Forms.TextBox();
+            this.txtCustomerId = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
+            this.Date = new System.Windows.Forms.Label();
+            this.dtPickerOrder = new System.Windows.Forms.DateTimePicker();
+            this.btnPayments = new System.Windows.Forms.Button();
+            this.btnOrderDetails = new System.Windows.Forms.Button();
+            this.btnOrderCreate = new System.Windows.Forms.Button();
+            this.btnOrderUpdate = new System.Windows.Forms.Button();
+            this.dtGridOrders = new System.Windows.Forms.DataGridView();
+            this.btnOrderDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridList)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridUDList)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(149, 16);
+            this.txtName.Location = new System.Drawing.Point(87, 55);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(169, 29);
+            this.txtName.Size = new System.Drawing.Size(169, 20);
             this.txtName.TabIndex = 0;
             // 
             // txtSurname
             // 
-            this.txtSurname.Location = new System.Drawing.Point(149, 59);
+            this.txtSurname.Location = new System.Drawing.Point(87, 98);
             this.txtSurname.Name = "txtSurname";
-            this.txtSurname.Size = new System.Drawing.Size(169, 29);
+            this.txtSurname.Size = new System.Drawing.Size(169, 20);
             this.txtSurname.TabIndex = 0;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(149, 94);
+            this.txtAddress.Location = new System.Drawing.Point(87, 133);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(169, 52);
@@ -90,293 +96,362 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(149, 152);
+            this.txtUserName.Location = new System.Drawing.Point(87, 191);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(169, 29);
+            this.txtUserName.Size = new System.Drawing.Size(169, 20);
             this.txtUserName.TabIndex = 0;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(149, 187);
+            this.txtPassword.Location = new System.Drawing.Point(87, 226);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(169, 29);
+            this.txtPassword.Size = new System.Drawing.Size(169, 20);
             this.txtPassword.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Name";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Surname";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 94);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 24);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Address";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 152);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 24);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "User name";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 187);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 24);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Password";
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Location = new System.Drawing.Point(163, 236);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(128, 46);
-            this.btnCreate.TabIndex = 2;
-            this.btnCreate.Text = "Create";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(268, 9);
+            this.label6.Location = new System.Drawing.Point(253, 6);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(405, 39);
             this.label6.TabIndex = 1;
             this.label6.Text = "Customer Manager Form";
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tabControl1.Location = new System.Drawing.Point(-1, 64);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(982, 468);
-            this.tabControl1.TabIndex = 3;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.dtGridList);
-            this.tabPage1.Controls.Add(this.txtPassword);
-            this.tabPage1.Controls.Add(this.btnCreate);
-            this.tabPage1.Controls.Add(this.txtName);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.txtSurname);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.txtAddress);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.txtUserName);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(974, 435);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Create";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
             // dtGridList
             // 
             this.dtGridList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridList.Location = new System.Drawing.Point(324, 16);
+            this.dtGridList.Location = new System.Drawing.Point(286, 59);
             this.dtGridList.Name = "dtGridList";
-            this.dtGridList.Size = new System.Drawing.Size(643, 413);
-            this.dtGridList.TabIndex = 3;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dtGridUDList);
-            this.tabPage2.Controls.Add(this.txtUDPassword);
-            this.tabPage2.Controls.Add(this.btnUpdate);
-            this.tabPage2.Controls.Add(this.btnDelete);
-            this.tabPage2.Controls.Add(this.txtId);
-            this.tabPage2.Controls.Add(this.txtUDName);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.txtUDSurname);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.txtUDAddress);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.txtUDUserName);
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(974, 435);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "List";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dtGridUDList
-            // 
-            this.dtGridUDList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridUDList.Location = new System.Drawing.Point(323, 18);
-            this.dtGridUDList.Name = "dtGridUDList";
-            this.dtGridUDList.Size = new System.Drawing.Size(645, 411);
-            this.dtGridUDList.TabIndex = 15;
-            this.dtGridUDList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridUDList_CellDoubleClick);
-            // 
-            // txtUDPassword
-            // 
-            this.txtUDPassword.Location = new System.Drawing.Point(139, 224);
-            this.txtUDPassword.Name = "txtUDPassword";
-            this.txtUDPassword.Size = new System.Drawing.Size(169, 29);
-            this.txtUDPassword.TabIndex = 4;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(153, 269);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(128, 46);
-            this.btnUpdate.TabIndex = 14;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(19, 269);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(128, 46);
-            this.btnDelete.TabIndex = 14;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // txtUDName
-            // 
-            this.txtUDName.Location = new System.Drawing.Point(139, 53);
-            this.txtUDName.Name = "txtUDName";
-            this.txtUDName.Size = new System.Drawing.Size(169, 29);
-            this.txtUDName.TabIndex = 5;
+            this.dtGridList.Size = new System.Drawing.Size(645, 416);
+            this.dtGridList.TabIndex = 30;
+            this.dtGridList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridList_CellDoubleClick);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 224);
+            this.label7.Location = new System.Drawing.Point(18, 226);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 24);
-            this.label7.TabIndex = 9;
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 22;
             this.label7.Text = "Password";
-            // 
-            // txtUDSurname
-            // 
-            this.txtUDSurname.Location = new System.Drawing.Point(139, 96);
-            this.txtUDSurname.Name = "txtUDSurname";
-            this.txtUDSurname.Size = new System.Drawing.Size(169, 29);
-            this.txtUDSurname.TabIndex = 6;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(15, 189);
+            this.label8.Location = new System.Drawing.Point(18, 191);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(102, 24);
-            this.label8.TabIndex = 10;
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 23;
             this.label8.Text = "User name";
-            // 
-            // txtUDAddress
-            // 
-            this.txtUDAddress.Location = new System.Drawing.Point(139, 131);
-            this.txtUDAddress.Multiline = true;
-            this.txtUDAddress.Name = "txtUDAddress";
-            this.txtUDAddress.Size = new System.Drawing.Size(169, 52);
-            this.txtUDAddress.TabIndex = 7;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 131);
+            this.label9.Location = new System.Drawing.Point(18, 133);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(80, 24);
-            this.label9.TabIndex = 11;
+            this.label9.Size = new System.Drawing.Size(45, 13);
+            this.label9.TabIndex = 24;
             this.label9.Text = "Address";
-            // 
-            // txtUDUserName
-            // 
-            this.txtUDUserName.Location = new System.Drawing.Point(139, 189);
-            this.txtUDUserName.Name = "txtUDUserName";
-            this.txtUDUserName.Size = new System.Drawing.Size(169, 29);
-            this.txtUDUserName.TabIndex = 8;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 18);
+            this.label12.Location = new System.Drawing.Point(18, 20);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(25, 24);
-            this.label12.TabIndex = 13;
+            this.label12.Size = new System.Drawing.Size(16, 13);
+            this.label12.TabIndex = 26;
             this.label12.Text = "Id";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 96);
+            this.label10.Location = new System.Drawing.Point(18, 98);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(87, 24);
-            this.label10.TabIndex = 12;
+            this.label10.Size = new System.Drawing.Size(49, 13);
+            this.label10.TabIndex = 25;
             this.label10.Text = "Surname";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 53);
+            this.label11.Location = new System.Drawing.Point(18, 55);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(61, 24);
-            this.label11.TabIndex = 13;
+            this.label11.Size = new System.Drawing.Size(35, 13);
+            this.label11.TabIndex = 27;
             this.label11.Text = "Name";
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(139, 18);
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(87, 20);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(169, 29);
-            this.txtId.TabIndex = 5;
+            this.txtId.Size = new System.Drawing.Size(169, 20);
+            this.txtId.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnUpdate);
+            this.groupBox1.Controls.Add(this.btnCreate);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.txtPassword);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.txtUserName);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.txtAddress);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.txtId);
+            this.groupBox1.Controls.Add(this.txtSurname);
+            this.groupBox1.Controls.Add(this.txtName);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Location = new System.Drawing.Point(8, 147);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(272, 328);
+            this.groupBox1.TabIndex = 34;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Customer info";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(166, 289);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(89, 28);
+            this.btnUpdate.TabIndex = 31;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Location = new System.Drawing.Point(103, 252);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(111, 31);
+            this.btnCreate.TabIndex = 30;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(32, 289);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(89, 28);
+            this.btnDelete.TabIndex = 32;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnFind);
+            this.groupBox2.Controls.Add(this.txtFind);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Location = new System.Drawing.Point(8, 59);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(272, 82);
+            this.groupBox2.TabIndex = 36;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Find";
+            // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(103, 49);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(97, 27);
+            this.btnFind.TabIndex = 36;
+            this.btnFind.Text = "Find";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // txtFind
+            // 
+            this.txtFind.Location = new System.Drawing.Point(84, 23);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(169, 20);
+            this.txtFind.TabIndex = 34;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Name";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.txtOrderId);
+            this.groupBox3.Controls.Add(this.txtCustomerId);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.cmbStatus);
+            this.groupBox3.Controls.Add(this.Date);
+            this.groupBox3.Controls.Add(this.dtPickerOrder);
+            this.groupBox3.Controls.Add(this.btnPayments);
+            this.groupBox3.Controls.Add(this.btnOrderDetails);
+            this.groupBox3.Controls.Add(this.btnOrderDelete);
+            this.groupBox3.Controls.Add(this.btnOrderCreate);
+            this.groupBox3.Controls.Add(this.btnOrderUpdate);
+            this.groupBox3.Controls.Add(this.dtGridOrders);
+            this.groupBox3.Location = new System.Drawing.Point(12, 481);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(930, 239);
+            this.groupBox3.TabIndex = 37;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Order info";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(16, 13);
+            this.label4.TabIndex = 54;
+            this.label4.Text = "Id";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.TabIndex = 61;
+            this.label5.Text = "Customer id";
+            // 
+            // txtOrderId
+            // 
+            this.txtOrderId.Enabled = false;
+            this.txtOrderId.Location = new System.Drawing.Point(80, 19);
+            this.txtOrderId.Name = "txtOrderId";
+            this.txtOrderId.Size = new System.Drawing.Size(169, 20);
+            this.txtOrderId.TabIndex = 52;
+            // 
+            // txtCustomerId
+            // 
+            this.txtCustomerId.Enabled = false;
+            this.txtCustomerId.Location = new System.Drawing.Point(80, 98);
+            this.txtCustomerId.Name = "txtCustomerId";
+            this.txtCustomerId.Size = new System.Drawing.Size(169, 20);
+            this.txtCustomerId.TabIndex = 60;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.TabIndex = 53;
+            this.label3.Text = "Status";
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "New Order",
+            "Wait",
+            "Road",
+            "Reached",
+            "Cancelled"});
+            this.cmbStatus.Location = new System.Drawing.Point(80, 71);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(168, 21);
+            this.cmbStatus.TabIndex = 59;
+            // 
+            // Date
+            // 
+            this.Date.AutoSize = true;
+            this.Date.Location = new System.Drawing.Point(11, 45);
+            this.Date.Name = "Date";
+            this.Date.Size = new System.Drawing.Size(30, 13);
+            this.Date.TabIndex = 55;
+            this.Date.Text = "Date";
+            // 
+            // dtPickerOrder
+            // 
+            this.dtPickerOrder.Location = new System.Drawing.Point(80, 45);
+            this.dtPickerOrder.Name = "dtPickerOrder";
+            this.dtPickerOrder.Size = new System.Drawing.Size(169, 20);
+            this.dtPickerOrder.TabIndex = 58;
+            // 
+            // btnPayments
+            // 
+            this.btnPayments.Location = new System.Drawing.Point(135, 198);
+            this.btnPayments.Name = "btnPayments";
+            this.btnPayments.Size = new System.Drawing.Size(111, 31);
+            this.btnPayments.TabIndex = 56;
+            this.btnPayments.Text = "Payments";
+            this.btnPayments.UseVisualStyleBackColor = true;
+            // 
+            // btnOrderDetails
+            // 
+            this.btnOrderDetails.Location = new System.Drawing.Point(14, 198);
+            this.btnOrderDetails.Name = "btnOrderDetails";
+            this.btnOrderDetails.Size = new System.Drawing.Size(111, 31);
+            this.btnOrderDetails.TabIndex = 56;
+            this.btnOrderDetails.Text = "Order Details";
+            this.btnOrderDetails.UseVisualStyleBackColor = true;
+            // 
+            // btnOrderCreate
+            // 
+            this.btnOrderCreate.Location = new System.Drawing.Point(135, 124);
+            this.btnOrderCreate.Name = "btnOrderCreate";
+            this.btnOrderCreate.Size = new System.Drawing.Size(111, 31);
+            this.btnOrderCreate.TabIndex = 56;
+            this.btnOrderCreate.Text = "Create";
+            this.btnOrderCreate.UseVisualStyleBackColor = true;
+            this.btnOrderCreate.Click += new System.EventHandler(this.btnOrderCreate_Click);
+            // 
+            // btnOrderUpdate
+            // 
+            this.btnOrderUpdate.Location = new System.Drawing.Point(17, 124);
+            this.btnOrderUpdate.Name = "btnOrderUpdate";
+            this.btnOrderUpdate.Size = new System.Drawing.Size(108, 31);
+            this.btnOrderUpdate.TabIndex = 57;
+            this.btnOrderUpdate.Text = "Update";
+            this.btnOrderUpdate.UseVisualStyleBackColor = true;
+            // 
+            // dtGridOrders
+            // 
+            this.dtGridOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridOrders.Location = new System.Drawing.Point(274, 19);
+            this.dtGridOrders.Name = "dtGridOrders";
+            this.dtGridOrders.Size = new System.Drawing.Size(645, 210);
+            this.dtGridOrders.TabIndex = 30;
+            this.dtGridOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridList_CellDoubleClick);
+            // 
+            // btnOrderDelete
+            // 
+            this.btnOrderDelete.Location = new System.Drawing.Point(80, 161);
+            this.btnOrderDelete.Name = "btnOrderDelete";
+            this.btnOrderDelete.Size = new System.Drawing.Size(111, 31);
+            this.btnOrderDelete.TabIndex = 56;
+            this.btnOrderDelete.Text = "Delete";
+            this.btnOrderDelete.UseVisualStyleBackColor = true;
+            this.btnOrderDelete.Click += new System.EventHandler(this.btnOrderDelete_Click);
             // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(986, 538);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(954, 728);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.dtGridList);
             this.Controls.Add(this.label6);
             this.Name = "CustomerForm";
             this.Text = "Customer Form";
             this.Load += new System.EventHandler(this.CustomerForm_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridList)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridUDList)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,32 +464,38 @@
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dtGridList;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dtGridUDList;
-        private System.Windows.Forms.TextBox txtUDPassword;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.TextBox txtUDName;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtUDSurname;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtUDAddress;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtUDUserName;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.TextBox txtFind;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridView dtGridOrders;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtOrderId;
+        private System.Windows.Forms.TextBox txtCustomerId;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbStatus;
+        private System.Windows.Forms.Label Date;
+        private System.Windows.Forms.DateTimePicker dtPickerOrder;
+        private System.Windows.Forms.Button btnOrderCreate;
+        private System.Windows.Forms.Button btnOrderUpdate;
+        private System.Windows.Forms.Button btnPayments;
+        private System.Windows.Forms.Button btnOrderDetails;
+        private System.Windows.Forms.Button btnOrderDelete;
     }
 }
 

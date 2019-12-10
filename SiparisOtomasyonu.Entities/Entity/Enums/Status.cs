@@ -8,6 +8,7 @@ namespace SiparisOtomasyonu.Entities.Entity.Enums
 {
     public enum Status
     {
+        NewOrder = 100,
         Wait = 101,
         Road = 102,
         Reached = 103,
