@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SiparisOtomasyonu.Entities.Entity;
 using SiparisOtomasyonu.Entities.Entity.Enums;
 
 namespace SiparisOtomasyonu.Core.Operations.Helpers
@@ -14,12 +15,12 @@ namespace SiparisOtomasyonu.Core.Operations.Helpers
             try
             {
                 action.Invoke();
-                return Result.Success;
+                return new Result { ResultState = ResultState.Success };
 
             }
             catch (Exception e)
             {
-                return Result.Erorr;
+                return new Result { ResultState = ResultState.Erorr, Message = e.Message };
             }
         }
     }

@@ -61,10 +61,10 @@
             this.dtPickerOrder = new System.Windows.Forms.DateTimePicker();
             this.btnPayments = new System.Windows.Forms.Button();
             this.btnOrderDetails = new System.Windows.Forms.Button();
+            this.btnOrderDelete = new System.Windows.Forms.Button();
             this.btnOrderCreate = new System.Windows.Forms.Button();
             this.btnOrderUpdate = new System.Windows.Forms.Button();
             this.dtGridOrders = new System.Windows.Forms.DataGridView();
-            this.btnOrderDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridList)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -221,7 +221,7 @@
             this.btnUpdate.TabIndex = 31;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnCreate
             // 
@@ -370,10 +370,12 @@
             // 
             // dtPickerOrder
             // 
+            this.dtPickerOrder.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtPickerOrder.Location = new System.Drawing.Point(80, 45);
             this.dtPickerOrder.Name = "dtPickerOrder";
             this.dtPickerOrder.Size = new System.Drawing.Size(169, 20);
             this.dtPickerOrder.TabIndex = 58;
+            this.dtPickerOrder.Value = new System.DateTime(2019, 12, 12, 0, 0, 0, 0);
             // 
             // btnPayments
             // 
@@ -392,6 +394,17 @@
             this.btnOrderDetails.TabIndex = 56;
             this.btnOrderDetails.Text = "Order Details";
             this.btnOrderDetails.UseVisualStyleBackColor = true;
+            this.btnOrderDetails.Click += new System.EventHandler(this.btnOrderDetails_Click);
+            // 
+            // btnOrderDelete
+            // 
+            this.btnOrderDelete.Location = new System.Drawing.Point(80, 161);
+            this.btnOrderDelete.Name = "btnOrderDelete";
+            this.btnOrderDelete.Size = new System.Drawing.Size(111, 31);
+            this.btnOrderDelete.TabIndex = 56;
+            this.btnOrderDelete.Text = "Delete";
+            this.btnOrderDelete.UseVisualStyleBackColor = true;
+            this.btnOrderDelete.Click += new System.EventHandler(this.btnOrderDelete_Click);
             // 
             // btnOrderCreate
             // 
@@ -411,6 +424,7 @@
             this.btnOrderUpdate.TabIndex = 57;
             this.btnOrderUpdate.Text = "Update";
             this.btnOrderUpdate.UseVisualStyleBackColor = true;
+            this.btnOrderUpdate.Click += new System.EventHandler(this.btnOrderUpdate_Click);
             // 
             // dtGridOrders
             // 
@@ -419,23 +433,13 @@
             this.dtGridOrders.Name = "dtGridOrders";
             this.dtGridOrders.Size = new System.Drawing.Size(645, 210);
             this.dtGridOrders.TabIndex = 30;
-            this.dtGridOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridList_CellDoubleClick);
-            // 
-            // btnOrderDelete
-            // 
-            this.btnOrderDelete.Location = new System.Drawing.Point(80, 161);
-            this.btnOrderDelete.Name = "btnOrderDelete";
-            this.btnOrderDelete.Size = new System.Drawing.Size(111, 31);
-            this.btnOrderDelete.TabIndex = 56;
-            this.btnOrderDelete.Text = "Delete";
-            this.btnOrderDelete.UseVisualStyleBackColor = true;
-            this.btnOrderDelete.Click += new System.EventHandler(this.btnOrderDelete_Click);
+            this.dtGridOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridOrders_CellDoubleClick);
             // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(954, 728);
+            this.ClientSize = new System.Drawing.Size(948, 728);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

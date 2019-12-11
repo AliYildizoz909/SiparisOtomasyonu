@@ -48,12 +48,13 @@
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\Check.cs" />
     <Compile Include="Entity\PathModel.cs" />
-    <Compile Include="Entity\Enums\Result.cs" />
+    <Compile Include="Entity\Enums\ResultState.cs" />
     <Compile Include="Entity\Enums\Status.cs" />
     <Compile Include="Entity\Enums\TaxStatus.cs" />
     <Compile Include="Entity\Item.cs" />
     <Compile Include="Entity\Order.cs" />
     <Compile Include="Entity\OrderDetail.cs" />
+    <Compile Include="Entity\Result.cs" />
     <Compile Include="Entity\UserAdmin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

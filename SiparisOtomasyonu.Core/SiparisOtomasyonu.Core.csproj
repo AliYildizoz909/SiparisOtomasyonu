@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Operations\Abstract\IRepositoryBase.cs" />
+    <Compile Include="Operations\Helpers\ConstHelper.cs" />
     <Compile Include="Operations\Helpers\DirectoryHelper.cs" />
     <Compile Include="Operations\Helpers\FileHelper.cs" />
     <Compile Include="Operations\Helpers\JsonParseHelper.cs" />

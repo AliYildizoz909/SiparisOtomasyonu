@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SiparisOtomasyonu.Entities.Entity.Enums
 {
-    public enum Result
+    public enum ResultState
     {
         Success = 101,
         Erorr = 102

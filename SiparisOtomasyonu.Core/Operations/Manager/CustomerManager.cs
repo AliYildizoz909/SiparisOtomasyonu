@@ -23,7 +23,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
 
         public override Result Add(Customer entity)
         {
-            entity.Id = Entities[Entities.Count - 1].Id + 1;
+            entity.Id = Entities.Count != 0 ? Entities[Entities.Count - 1].Id + 1 : 1;
             return base.Add(entity);
         }
 
