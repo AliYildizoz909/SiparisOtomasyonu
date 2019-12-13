@@ -34,13 +34,18 @@ namespace SiparisOtomasyonu.Core.Operations
             PathCheck();
         }
 
-        public List<TEntity> GetAll()
+        public virtual List<TEntity> GetAll()
         {
             string jsonText = _fileHelper.FileRead();
             List<TEntity> entities = JsonParseHelper<TEntity>.GetDeserializeList(jsonText);
             return entities;
         }
-
+        public List<T> GetAll<T>() where T : class, new()
+        {
+            string jsonText = _fileHelper.FileRead();
+            List<T> entities = JsonParseHelper<T>.GetDeserializeList(jsonText);
+            return entities;
+        }
         public List<TEntity> GetByFilter(Expression<Func<TEntity, bool>> filter)
         {
 

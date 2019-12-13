@@ -9,42 +9,37 @@ using SiparisOtomasyonu.Entities.Entity.Enums;
 
 namespace SiparisOtomasyonu.Core.Operations.Manager
 {
-    public class CustomerManager : RepositoryBase<Customer>
+    public class CashManager : RepositoryBase<Cash>
     {
-        public CustomerManager(PathModel pathModel) : base(pathModel)
+        public CashManager(PathModel pathModel) : base(pathModel)
         {
-
         }
-        public Customer GetById(int id)
+        public Cash GetById(int id)
         {
-            Customer customer = Entities.FirstOrDefault(I => I.Id == id);
-            return customer;
+            Cash cash = Entities.FirstOrDefault(I => I.Id == id);
+            return cash;
         }
-
-        public override Result Add(Customer entity)
+        public override Result Add(Cash entity)
         {
             entity.Id = Entities.Count != 0 ? Entities[Entities.Count - 1].Id + 1 : 1;
             return base.Add(entity);
         }
-
-        public Result Delete(Customer customer)
+        public Result Delete(Cash cash)
         {
-            if (Entities.Contains(customer))
+            if (Entities.Contains(cash))
             {
-                return base.Delete(Entities.FindIndex(I => I.Id == customer.Id));
+                return base.Delete(Entities.FindIndex(I => I.Id == cash.Id));
             }
             return new Result { ResultState = ResultState.Erorr };
         }
-
-        public Result Update(Customer customer)
+        public Result Update(Cash cash)
         {
             return UseTryCatch.Use(() =>
             {
-                Delete(customer);
-                Entities.Add(customer);
+                Delete(cash);
+                Entities.Add(cash);
                 Sync();
             });
         }
-
     }
 }

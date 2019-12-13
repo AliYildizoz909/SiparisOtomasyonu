@@ -50,10 +50,12 @@
     <Compile Include="Operations\Helpers\FileHelper.cs" />
     <Compile Include="Operations\Helpers\JsonParseHelper.cs" />
     <Compile Include="Operations\Helpers\UseTryCatch.cs" />
+    <Compile Include="Operations\Manager\CashManager.cs" />
+    <Compile Include="Operations\Manager\CheckManager.cs" />
     <Compile Include="Operations\Manager\CustomerManager.cs" />
     <Compile Include="Operations\Manager\OrderDetailManager.cs" />
     <Compile Include="Operations\Manager\OrderManager.cs" />
-    <Compile Include="Operations\Manager\PaymentManager.cs" />
+    <Compile Include="Operations\Manager\CreditManager.cs" />
     <Compile Include="Operations\RepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

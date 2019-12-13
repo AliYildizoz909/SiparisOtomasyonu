@@ -34,6 +34,7 @@ namespace SiparisOtomasyonu.WindowsUI
 
         private void CustomerTextboxFill(DataGridViewCellCollection cellCollection)
         {
+            cmbTax.Text = "";
             txtId.Text = cellCollection[0].Value.ToString();
 
             txtOrderId.Text = cellCollection[1].Value.ToString();
@@ -55,7 +56,7 @@ namespace SiparisOtomasyonu.WindowsUI
         private void DataGridFill()
         {
             dtGridList.DataSource = null;
-            if (_orderId==0)
+            if (_orderId == 0)
             {
                 dtGridList.DataSource = _orderDetailManager.Entities.OrderBy(I => I.Id).ToList();
             }
@@ -63,14 +64,62 @@ namespace SiparisOtomasyonu.WindowsUI
             {
                 dtGridList.DataSource = _orderDetailManager.Entities.Where(I => I.OrderId == _orderId).ToList().OrderBy(I => I.Id).ToList();
             }
-            
+
 
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            if (_orderId != 0)
+            {
+                OrderDetail orderDetail = new OrderDetail
+                {
+                    OrderId = int.Parse(txtOrderId.Text),
+                    Price = nudPrice.Value,
+                    Quantity = int.Parse(nudQuantity.Text),
+                    Weight = nudWeight.Value,
+                    TaxStatus = SelectedTaxStatus()
+                };
+                lblSubTotal.Text = orderDetail.SubTotal.ToString();
+                lblSubWeight.Text = orderDetail.SubWeight.ToString();
+                Result result = _orderDetailManager.Add(orderDetail);
+                if (result.ResultState == ResultState.Erorr)
+                {
+                    MessageBox.Show(result.Message, "Hata işlem yapılamadı");
+                }
+                else
+                {
+                    DataGridFill();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Order Id boş geçilemez", "Hata işlem yapılamadı");
+            }
+
+        }
+
+        private TaxStatus SelectedTaxStatus()
+        {
+            TaxStatus taxStatus = TaxStatus.Tax18;
+            switch (cmbTax.Text)
+            {
+                case "Tax18":
+                    taxStatus = TaxStatus.Tax18;
+                    break;
+                case "Tax2":
+                    taxStatus = TaxStatus.Tax2;
+                    break;
+            }
+
+            return taxStatus;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
             OrderDetail orderDetail = new OrderDetail
             {
+                Id = int.Parse(txtId.Text),
                 OrderId = int.Parse(txtOrderId.Text),
                 Price = nudPrice.Value,
                 Quantity = int.Parse(nudQuantity.Text),
@@ -79,7 +128,7 @@ namespace SiparisOtomasyonu.WindowsUI
             };
             lblSubTotal.Text = orderDetail.SubTotal.ToString();
             lblSubWeight.Text = orderDetail.SubWeight.ToString();
-            Result result = _orderDetailManager.Add(orderDetail);
+            Result result = _orderDetailManager.Update(orderDetail);
             if (result.ResultState == ResultState.Erorr)
             {
                 MessageBox.Show(result.Message, "Hata işlem yapılamadı");
@@ -87,23 +136,49 @@ namespace SiparisOtomasyonu.WindowsUI
             else
             {
                 DataGridFill();
+                TextBoxClear();
             }
         }
 
-        private TaxStatus SelectedTaxStatus()
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            TaxStatus taxStatus = TaxStatus.Tax18;
-            switch (cmbTax.Text)
+            OrderDetail orderDetail = new OrderDetail
             {
-                case "18":
-                    taxStatus = TaxStatus.Tax18;
-                    break;
-                case "2":
-                    taxStatus = TaxStatus.Tax2;
-                    break;
+                Id = int.Parse(txtId.Text),
+            };
+            Result result = _orderDetailManager.Delete(orderDetail);
+            if (result.ResultState == ResultState.Erorr)
+            {
+                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
             }
+            else
+            {
+                DataGridFill();
+                TextBoxClear();
+            }
+        }
 
-            return taxStatus;
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            TextBoxClear();
+        }
+
+        private void TextBoxClear()
+        {
+            txtOrderId.Text = "";
+            txtId.Text = "";
+            nudPrice.Text = "";
+            nudQuantity.Text = "";
+            nudWeight.Text = "";
+            cmbTax.Text = "";
+            lblSubTotal.Text = "00";
+            lblSubWeight.Text = "00";
+        }
+
+        private void btnPayments_Click(object sender, EventArgs e)
+        {
+            PaymentForm paymentForm = new PaymentForm(decimal.Parse(lblSubTotal.Text), int.Parse(txtOrderId.Text));
+            paymentForm.Show();
         }
     }
 }

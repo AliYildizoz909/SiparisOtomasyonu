@@ -43,6 +43,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCustomerClear = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -51,6 +52,7 @@
             this.txtFind = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnOrderClear = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtOrderId = new System.Windows.Forms.TextBox();
@@ -191,6 +193,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnCustomerClear);
             this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.btnCreate);
             this.groupBox1.Controls.Add(this.btnDelete);
@@ -213,6 +216,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer info";
             // 
+            // btnCustomerClear
+            // 
+            this.btnCustomerClear.Location = new System.Drawing.Point(4, 292);
+            this.btnCustomerClear.Name = "btnCustomerClear";
+            this.btnCustomerClear.Size = new System.Drawing.Size(58, 23);
+            this.btnCustomerClear.TabIndex = 33;
+            this.btnCustomerClear.Text = "Clear";
+            this.btnCustomerClear.UseVisualStyleBackColor = true;
+            this.btnCustomerClear.Click += new System.EventHandler(this.btnCustomerClear_Click);
+            // 
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(166, 289);
@@ -231,10 +244,11 @@
             this.btnCreate.TabIndex = 30;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(32, 289);
+            this.btnDelete.Location = new System.Drawing.Point(71, 289);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(89, 28);
             this.btnDelete.TabIndex = 32;
@@ -281,6 +295,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnOrderClear);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.txtOrderId);
@@ -301,6 +316,16 @@
             this.groupBox3.TabIndex = 37;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Order info";
+            // 
+            // btnOrderClear
+            // 
+            this.btnOrderClear.Location = new System.Drawing.Point(14, 165);
+            this.btnOrderClear.Name = "btnOrderClear";
+            this.btnOrderClear.Size = new System.Drawing.Size(58, 23);
+            this.btnOrderClear.TabIndex = 62;
+            this.btnOrderClear.Text = "Clear";
+            this.btnOrderClear.UseVisualStyleBackColor = true;
+            this.btnOrderClear.Click += new System.EventHandler(this.btnOrderClear_Click);
             // 
             // label4
             // 
@@ -385,6 +410,7 @@
             this.btnPayments.TabIndex = 56;
             this.btnPayments.Text = "Payments";
             this.btnPayments.UseVisualStyleBackColor = true;
+            this.btnPayments.Click += new System.EventHandler(this.btnPayments_Click);
             // 
             // btnOrderDetails
             // 
@@ -500,6 +526,8 @@
         private System.Windows.Forms.Button btnPayments;
         private System.Windows.Forms.Button btnOrderDetails;
         private System.Windows.Forms.Button btnOrderDelete;
+        private System.Windows.Forms.Button btnCustomerClear;
+        private System.Windows.Forms.Button btnOrderClear;
     }
 }
 

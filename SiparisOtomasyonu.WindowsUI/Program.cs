@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SiparisOtomasyonu.Core.Operations.Helpers;
 
 namespace SiparisOtomasyonu.WindowsUI
 {
@@ -16,7 +17,12 @@ namespace SiparisOtomasyonu.WindowsUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OrderDetailForm());
+            DirectoryHelper directoryHelper = new DirectoryHelper("C:\\", "SiparisOtomasyonuDb");
+            if (!directoryHelper.DirectoryExists())
+            {
+                directoryHelper.Create();
+            }
+            Application.Run(new CustomerForm());
         }
     }
 }

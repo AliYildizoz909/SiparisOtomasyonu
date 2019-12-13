@@ -26,7 +26,11 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
         }
         public Result Delete(OrderDetail orderDetail)
         {
-            return base.Delete(Entities.FindIndex(I => I.Id == orderDetail.Id));
+            if (Entities.Contains(orderDetail))
+            {
+                return base.Delete(Entities.FindIndex(I => I.Id == orderDetail.Id));
+            }
+            return new Result { ResultState = ResultState.Erorr };
         }
         public Result Update(OrderDetail orderDetail)
         {

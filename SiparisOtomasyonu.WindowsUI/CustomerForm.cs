@@ -19,39 +19,16 @@ namespace SiparisOtomasyonu.WindowsUI
     {
         private CustomerManager _customerManager;
         private OrderManager _orderManager;
-        private OrderDetailManager _orderDetailManager;
-        private PaymentManager _paymentManager;
+
         public CustomerForm()
         {
             InitializeComponent();
 
             _customerManager = new CustomerManager(new PathModel { DirectoryName = ConstHelper.customerDirectoryName, FileName = ConstHelper.customerFileName });
             _orderManager = new OrderManager(new PathModel { DirectoryName = ConstHelper.orderDirectoryName, FileName = ConstHelper.orderFileName });
-            _orderDetailManager = new OrderDetailManager(new PathModel { DirectoryName = ConstHelper.orderDetailDirectoryName, FileName = ConstHelper.orderDetailFileName });
-            _paymentManager = new PaymentManager(new PathModel { DirectoryName = ConstHelper.paymentDirectoryName, FileName = ConstHelper.paymentFileName });
-
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            Result result = _customerManager.Add(new Customer
-            {
-                Name = txtName.Text,
-                Surname = txtSurname.Text,
-                Address = txtAddress.Text,
-                Password = txtPassword.Text,
-                UserName = txtUserName.Text
-            });
-            if (result.ResultState == ResultState.Erorr)
-            {
-                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
-            }
-            else
-            {
-                DataGridCustomerFill();
-            }
 
-        }
 
         private void CustomerForm_Load(object sender, EventArgs e)
         {
@@ -79,6 +56,7 @@ namespace SiparisOtomasyonu.WindowsUI
         }
         private void CustomerTextboxFill(DataGridViewCellCollection cellCollection)
         {
+            cmbStatus.Text = "";
             txtId.Text = cellCollection[0].Value.ToString();
 
             txtName.Text = cellCollection[1].Value.ToString();
@@ -88,8 +66,10 @@ namespace SiparisOtomasyonu.WindowsUI
             txtUserName.Text = cellCollection[5].Value.ToString();
             txtCustomerId.Text = cellCollection[0].Value.ToString();
         }
-        private void TextboxClear()
+        private void TextboxCustomerClear()
         {
+            dtGridOrders.DataSource = null;
+            txtFind.Text = "";
             txtId.Text = "";
             txtName.Text = "";
             txtSurname.Text = "";
@@ -123,7 +103,7 @@ namespace SiparisOtomasyonu.WindowsUI
             else
             {
                 DataGridCustomerFill();
-                TextboxClear();
+                TextboxCustomerClear();
             }
 
         }
@@ -151,12 +131,13 @@ namespace SiparisOtomasyonu.WindowsUI
             else
             {
                 DataGridCustomerFill();
-                TextboxClear();
+                TextboxCustomerClear();
             }
 
         }
         private void btnOrderCreate_Click(object sender, EventArgs e)
         {
+
             if (!string.IsNullOrEmpty(txtId.Text))
             {
                 Status status = SelectedStatus();
@@ -176,6 +157,11 @@ namespace SiparisOtomasyonu.WindowsUI
                     DataGridOrderFill();
                 }
             }
+            else
+            {
+                MessageBox.Show("Customer Id boş geçilemez", "Hata işlem yapılamadı");
+            }
+
         }
 
         private Status SelectedStatus()
@@ -205,8 +191,7 @@ namespace SiparisOtomasyonu.WindowsUI
 
         private void btnOrderDelete_Click(object sender, EventArgs e)
         {
-            _orderDetailManager.Entities.RemoveAll((I => I.OrderId == int.Parse(txtOrderId.Text)));
-            _paymentManager.Entities.RemoveAll(I => I.OrderId == int.Parse(txtOrderId.Text));
+
             Result result = _orderManager.Delete(new Order()
             {
                 Id = int.Parse(txtOrderId.Text)
@@ -259,6 +244,51 @@ namespace SiparisOtomasyonu.WindowsUI
         {
             OrderDetailForm detailForm = new OrderDetailForm(int.Parse(txtOrderId.Text));
             detailForm.Show();
+        }
+
+        private void btnOrderClear_Click(object sender, EventArgs e)
+        {
+            TextboxOrderClear();
+        }
+
+        private void TextboxOrderClear()
+        {
+            dtGridOrders.DataSource = null;
+            txtOrderId.Text = "";
+            txtCustomerId.Text = "";
+            cmbStatus.Text = "";
+
+        }
+
+        private void btnCustomerClear_Click(object sender, EventArgs e)
+        {
+            TextboxCustomerClear();
+        }
+
+        private void btnCreate_Click_1(object sender, EventArgs e)
+        {
+            Result result = _customerManager.Add(new Customer
+            {
+                Name = txtName.Text,
+                Surname = txtSurname.Text,
+                Address = txtAddress.Text,
+                Password = txtPassword.Text,
+                UserName = txtUserName.Text
+            });
+            if (result.ResultState == ResultState.Erorr)
+            {
+                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
+            }
+            else
+            {
+                DataGridCustomerFill();
+            }
+        }
+
+        private void btnPayments_Click(object sender, EventArgs e)
+        {
+            PaymentForm paymentForm = new PaymentForm(0, int.Parse(txtOrderId.Text));
+            paymentForm.Show();
         }
     }
 }
