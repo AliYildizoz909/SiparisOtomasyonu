@@ -28,9 +28,9 @@ namespace SiparisOtomasyonu.WindowsUI
             _amount = amount;
             _orderId = orderId;
             InitializeComponent();
-            _creditManager = new CreditManager(new PathModel { DirectoryName = ConstHelper.paymentsDirectoryName, FileName = ConstHelper.creditFileName });
-            _cashManager = new CashManager(new PathModel { DirectoryName = ConstHelper.paymentsDirectoryName, FileName = ConstHelper.cashFileName });
-            _checkManager = new CheckManager(new PathModel { DirectoryName = ConstHelper.paymentsDirectoryName, FileName = ConstHelper.checkFileName });
+            _creditManager = CreditManager.CreateAsSingleton(ConstHelper.CreditPathModel);
+            _cashManager = CashManager.CreateAsSingleton(ConstHelper.CashPathModel);
+            _checkManager = CheckManager.CreateAsSingleton(ConstHelper.CheckPathModel);
         }
 
         void DataGridCashFill()
@@ -118,7 +118,7 @@ namespace SiparisOtomasyonu.WindowsUI
                 {
                     Result result = _checkManager.Add(new Check
                     {
-                        Amount = decimal.Parse(txtCashAmount.Text),
+                        Amount = decimal.Parse(txtCheckAmount.Text),
                         OrderId = _orderId,
                         BankId = int.Parse(txtBankId.Text),
                         Name = txtCheckName.Text,
@@ -150,17 +150,17 @@ namespace SiparisOtomasyonu.WindowsUI
         {
             if (_orderId != 0)
             {
-                bool isAuth = _creditManager.Authorized(txtCreditName.Text, txtCheckSurname.Text, _orderId);
+                bool isAuth = _creditManager.Authorized(txtCreditName.Text, txtCreditSurname.Text, _orderId);
                 if (isAuth)
                 {
                     Result result = _creditManager.Add(new Credit
                     {
-                        Amount = decimal.Parse(txtCashAmount.Text),
+                        Amount = decimal.Parse(txtCreditAmount.Text),
                         OrderId = _orderId,
                         Cvc = short.Parse(txtCVC.Text),
                         CardNumber = txtCardNumber.Text,
-                        Name = txtCheckName.Text,
-                        Surname = txtCheckSurname.Text
+                        Name = txtCreditName.Text,
+                        Surname = txtCreditSurname.Text
                     });
                     if (result.ResultState == ResultState.Erorr)
                     {
@@ -205,12 +205,12 @@ namespace SiparisOtomasyonu.WindowsUI
 
         private void CheckTextboxFill(DataGridViewCellCollection cellCollection)
         {
-            txtCheckId.Text = cellCollection[0].Value.ToString();
+            txtCheckId.Text = cellCollection[3].Value.ToString();
 
-            txtCheckAmount.Text = cellCollection[2].Value.ToString();
-            txtCheckName.Text = cellCollection[3].Value.ToString();
-            txtCheckSurname.Text = cellCollection[4].Value.ToString();
-            txtBankId.Text = cellCollection[5].Value.ToString();
+            txtCheckAmount.Text = cellCollection[5].Value.ToString();
+            txtCheckName.Text = cellCollection[0].Value.ToString();
+            txtCheckSurname.Text = cellCollection[1].Value.ToString();
+            txtBankId.Text = cellCollection[2].Value.ToString();
         }
 
         private void dtGridCreditList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -222,23 +222,175 @@ namespace SiparisOtomasyonu.WindowsUI
 
         private void CreditTextboxFill(DataGridViewCellCollection cellCollection)
         {
-            txtCheckId.Text = cellCollection[0].Value.ToString();
+            txtCreditId.Text = cellCollection[4].Value.ToString();
 
-            txtCheckAmount.Text = cellCollection[2].Value.ToString();
-            txtCardNumber.Text = cellCollection[3].Value.ToString();
-            txtCVC.Text = cellCollection[4].Value.ToString();
-            txtCreditName.Text = cellCollection[5].Value.ToString();
-            txtCreditSurname.Text = cellCollection[6].Value.ToString();
+            txtCreditAmount.Text = cellCollection[6].Value.ToString();
+            txtCardNumber.Text = cellCollection[0].Value.ToString();
+            txtCVC.Text = cellCollection[1].Value.ToString();
+            txtCreditName.Text = cellCollection[2].Value.ToString();
+            txtCreditSurname.Text = cellCollection[3].Value.ToString();
         }
 
         private void btnCheckClear_Click(object sender, EventArgs e)
         {
+            TextBoxCheckClear();
+        }
 
+        private void TextBoxCheckClear()
+        {
+            txtBankId.Text = "";
+            txtCheckId.Text = "";
+            txtCheckName.Text = "";
+            txtCheckSurname.Text = "";
+            txtCheckAmount.Text = "";
         }
 
         private void btnCreditClear_Click(object sender, EventArgs e)
         {
+            TextBoxCreditClear();
+        }
 
+        private void TextBoxCreditClear()
+        {
+            txtCreditId.Text = "";
+            txtCreditName.Text = "";
+            txtCreditSurname.Text = "";
+            txtCreditAmount.Text = "";
+            txtCVC.Text = "";
+            txtCardNumber.Text = "";
+        }
+
+        private void btnCashDelete_Click(object sender, EventArgs e)
+        {
+            Result result = _cashManager.Delete(new Cash
+            {
+                Id = int.Parse(txtCashId.Text),
+                OrderId = _orderId,
+                Amount = decimal.Parse(txtCashAmount.Text)
+            });
+            if (result.ResultState == ResultState.Erorr)
+            {
+                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
+            }
+            else
+            {
+                DataGridCashFill();
+                txtCashAmount.Text = "";
+                txtCashId.Text = "";
+            }
+        }
+
+        private void btnCheckDelete_Click(object sender, EventArgs e)
+        {
+            Result result = _checkManager.Delete(new Check
+            {
+                Id = int.Parse(txtCheckId.Text),
+                OrderId = _orderId,
+                Amount = decimal.Parse(txtCheckAmount.Text),
+                Name = txtCheckName.Text,
+                Surname = txtCheckSurname.Text,
+                BankId = int.Parse(txtBankId.Text)
+
+            });
+            if (result.ResultState == ResultState.Erorr)
+            {
+                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
+            }
+            else
+            {
+                DataGridCheckFill();
+                TextBoxCheckClear();
+            }
+        }
+
+        private void btnCreditDelete_Click(object sender, EventArgs e)
+        {
+            Result result = _creditManager.Delete(new Credit
+            {
+                Id = int.Parse(txtCreditId.Text),
+                OrderId = _orderId,
+                Amount = decimal.Parse(txtCreditAmount.Text),
+                Name = txtCreditName.Text,
+                Surname = txtCreditSurname.Text,
+                CardNumber = txtCardNumber.Text,
+                Cvc = short.Parse(txtCVC.Text)
+            });
+            if (result.ResultState == ResultState.Erorr)
+            {
+                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
+            }
+            else
+            {
+                DataGridCreditFill();
+                TextBoxCreditClear();
+            }
+        }
+
+
+        private void btCheckUpdate_Click(object sender, EventArgs e)
+        {
+            Result result = _checkManager.Update(new Check
+            {
+                Id = int.Parse(txtCheckId.Text),
+                OrderId = _orderId,
+                Amount = decimal.Parse(txtCheckAmount.Text),
+                Name = txtCheckName.Text,
+                Surname = txtCheckSurname.Text,
+                BankId = int.Parse(txtBankId.Text)
+
+            });
+            if (result.ResultState == ResultState.Erorr)
+            {
+                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
+            }
+            else
+            {
+                DataGridCheckFill();
+                TextBoxCheckClear();
+            }
+        }
+
+        private void btnCreditUpdate_Click(object sender, EventArgs e)
+        {
+            Result result = _creditManager.Update(new Credit
+            {
+                Id = int.Parse(txtCreditId.Text),
+                OrderId = _orderId,
+                Amount = decimal.Parse(txtCreditAmount.Text),
+                Name = txtCreditName.Text,
+                Surname = txtCreditSurname.Text,
+                CardNumber = txtCardNumber.Text,
+                Cvc = short.Parse(txtCVC.Text)
+            });
+            if (result.ResultState == ResultState.Erorr)
+            {
+                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
+            }
+            else
+            {
+                DataGridCreditFill();
+                TextBoxCreditClear();
+            }
+        }
+
+        private void btnCashUpdate_Click(object sender, EventArgs e)
+        {
+            Result result = _cashManager.Update(new Cash
+            {
+                Id = int.Parse(txtCashId.Text),
+                OrderId = _orderId,
+                Amount = decimal.Parse(txtCashAmount.Text)
+            });
+            if (result.ResultState == ResultState.Erorr)
+            {
+                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
+            }
+            else
+            {
+                DataGridCashFill();
+                txtCashAmount.Text = "";
+                txtCashId.Text = "";
+            }
         }
     }
 }

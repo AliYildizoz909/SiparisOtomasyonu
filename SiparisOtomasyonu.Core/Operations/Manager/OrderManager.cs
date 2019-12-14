@@ -3,64 +3,101 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SiparisOtomasyonu.Core.Operations.Abstract;
 using SiparisOtomasyonu.Core.Operations.Helpers;
 using SiparisOtomasyonu.Entities.Entity;
 using SiparisOtomasyonu.Entities.Entity.Enums;
 
 namespace SiparisOtomasyonu.Core.Operations.Manager
 {
-    public class OrderManager : RepositoryBase<Order>
+    public class OrderManager : RepositoryBase<Order>, IManager
     {
+
         private CreditManager _creditManager;
         private CashManager _cashManager;
         private CheckManager _checkManager;
         private OrderDetailManager _orderDetailManager;
-        public OrderManager(PathModel pathModel) : base(pathModel)
+        private CustomerManager _customerManager;
+        private static OrderManager _orderManager;
+        private OrderManager(PathModel pathModel = null) : base(pathModel)
         {
-            _creditManager = new CreditManager(new PathModel { DirectoryName = ConstHelper.paymentsDirectoryName, FileName = ConstHelper.creditFileName });
-            _cashManager = new CashManager(new PathModel { DirectoryName = ConstHelper.paymentsDirectoryName, FileName = ConstHelper.cashFileName });
-            _checkManager = new CheckManager(new PathModel { DirectoryName = ConstHelper.paymentsDirectoryName, FileName = ConstHelper.checkFileName });
-            _orderDetailManager = new OrderDetailManager(new PathModel { DirectoryName = ConstHelper.orderDetailDirectoryName, FileName = ConstHelper.orderDetailFileName });
+            _customerManager = CustomerManager.CreateAsSingleton(ConstHelper.CustomerPathModel);
+            _creditManager = CreditManager.CreateAsSingleton(ConstHelper.CreditPathModel);
+            _cashManager = CashManager.CreateAsSingleton(ConstHelper.CashPathModel);
+            _checkManager = CheckManager.CreateAsSingleton(ConstHelper.CheckPathModel);
+            _orderDetailManager = OrderDetailManager.CreateAsSingleton(ConstHelper.OrderDetailPathModel);
+        }
+
+        public static OrderManager CreateAsSingleton(PathModel pathModel)
+        {
+            if (_orderManager == null)
+            {
+
+                if (_orderManager == null)
+                {
+                    _orderManager = new OrderManager(pathModel);
+                }
+            }
+
+            return _orderManager;
         }
         public Order GetById(int id)
         {
             Order order = Entities.FirstOrDefault(I => I.Id == id);
             return order;
         }
+
         public override Result Add(Order entity)
         {
             entity.Id = Entities.Count != 0 ? Entities[Entities.Count - 1].Id + 1 : 1;
+            Customer customer = _customerManager.Entities.Find(I => I.Id == entity.CustomerId);
+            if (customer != null)
+            {
 
+                customer.OrderIds.Add(entity.Id);
+                _customerManager.Update(customer);
 
+            }
             return base.Add(entity);
         }
         public Result Delete(Order order)
         {
-            Cash cash = _cashManager.Entities.Find(I => I.OrderId == order.Id);
-            Check check = _checkManager.Entities.Find(I => I.OrderId == order.Id);
-            Credit credit = _creditManager.Entities.Find(I => I.OrderId == order.Id);
-            OrderDetail orderDetail = _orderDetailManager.Entities.Find(I => I.OrderId == order.Id);
-            if (cash != null)
+            bool res = Entities.Find(I => I.Id == order.Id && I.CustomerId == order.CustomerId) != null;
+            if (res)
             {
-                _cashManager.Delete(cash);
-            }
+                Cash cash = _cashManager.Entities.Find(I => I.OrderId == order.Id);
+                Check check = _checkManager.Entities.Find(I => I.OrderId == order.Id);
+                Credit credit = _creditManager.Entities.Find(I => I.OrderId == order.Id);
+                OrderDetail orderDetail = _orderDetailManager.Entities.Find(I => I.OrderId == order.Id);
+                Customer customer = _customerManager.Entities.Find(I => I.Id == order.CustomerId);
+                if (cash != null)
+                {
+                    _cashManager.Delete(cash);
+                }
 
-            if (check != null)
-            {
-                _checkManager.Delete(check);
-            }
+                if (check != null)
+                {
+                    _checkManager.Delete(check);
+                }
 
-            if (credit != null)
-            {
-                _creditManager.Delete(credit);
-            }
-            if (orderDetail != null)
-            {
-                _orderDetailManager.Delete(orderDetail);
-            }
+                if (credit != null)
+                {
+                    _creditManager.Delete(credit);
+                }
+                if (orderDetail != null)
+                {
+                    _orderDetailManager.Delete(orderDetail);
+                }
+                if (customer != null)
+                {
+                    int orderId = customer.OrderIds.Find(I => I == order.Id);
+                    if (orderId != 0)
+                    {
+                        customer.OrderIds.Remove(orderId);
+                        _customerManager.Update(customer);
+                    }
+                }
 
-            if (Entities.Contains(order))
-            {
                 return base.Delete(Entities.FindIndex(I => I.Id == order.Id));
             }
             return new Result { ResultState = ResultState.Erorr };
@@ -70,7 +107,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
 
             return UseTryCatch.Use(() =>
             {
-                Delete(order);
+                base.Delete(Entities.FindIndex(I => I.Id == order.Id));
                 Entities.Add(order);
                 Sync();
             });

@@ -22,7 +22,7 @@ namespace SiparisOtomasyonu.WindowsUI
         {
             _orderId = orderId;
             InitializeComponent();
-            _orderDetailManager = new OrderDetailManager(new PathModel { DirectoryName = ConstHelper.orderDetailDirectoryName, FileName = ConstHelper.orderDetailFileName });
+            _orderDetailManager = OrderDetailManager.CreateAsSingleton(ConstHelper.OrderDetailPathModel);
         }
 
         private void dtGridList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -145,6 +145,7 @@ namespace SiparisOtomasyonu.WindowsUI
             OrderDetail orderDetail = new OrderDetail
             {
                 Id = int.Parse(txtId.Text),
+                OrderId = int.Parse(txtOrderId.Text)
             };
             Result result = _orderDetailManager.Delete(orderDetail);
             if (result.ResultState == ResultState.Erorr)

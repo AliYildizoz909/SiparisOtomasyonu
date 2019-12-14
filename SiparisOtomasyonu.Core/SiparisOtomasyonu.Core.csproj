@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Operations\Abstract\IManager.cs" />
     <Compile Include="Operations\Abstract\IRepositoryBase.cs" />
     <Compile Include="Operations\Helpers\ConstHelper.cs" />
     <Compile Include="Operations\Helpers\DirectoryHelper.cs" />

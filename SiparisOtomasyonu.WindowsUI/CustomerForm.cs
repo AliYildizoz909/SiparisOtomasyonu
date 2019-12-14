@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SiparisOtomasyonu.Core.Operations;
 using SiparisOtomasyonu.Core.Operations.Helpers;
 using SiparisOtomasyonu.Entities.Entity.Abstract;
 using SiparisOtomasyonu.Entities.Entity.Enums;
@@ -24,8 +25,8 @@ namespace SiparisOtomasyonu.WindowsUI
         {
             InitializeComponent();
 
-            _customerManager = new CustomerManager(new PathModel { DirectoryName = ConstHelper.customerDirectoryName, FileName = ConstHelper.customerFileName });
-            _orderManager = new OrderManager(new PathModel { DirectoryName = ConstHelper.orderDirectoryName, FileName = ConstHelper.orderFileName });
+            _customerManager = CustomerManager.CreateAsSingleton(ConstHelper.CustomerPathModel);
+            _orderManager = OrderManager.CreateAsSingleton(ConstHelper.OrderPathModel);
         }
 
 
@@ -194,7 +195,10 @@ namespace SiparisOtomasyonu.WindowsUI
 
             Result result = _orderManager.Delete(new Order()
             {
-                Id = int.Parse(txtOrderId.Text)
+                Id = int.Parse(txtOrderId.Text),
+                CustomerId = int.Parse(txtCustomerId.Text),
+                Date = dtPickerOrder.Value,
+                Status = SelectedStatus()
             });
             if (result.ResultState == ResultState.Erorr)
             {
@@ -202,6 +206,7 @@ namespace SiparisOtomasyonu.WindowsUI
             }
             else
             {
+                TextboxOrderClear();
                 DataGridOrderFill();
             }
         }

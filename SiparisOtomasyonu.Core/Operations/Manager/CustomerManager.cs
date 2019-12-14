@@ -11,9 +11,24 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
 {
     public class CustomerManager : RepositoryBase<Customer>
     {
-        public CustomerManager(PathModel pathModel) : base(pathModel)
+        private CustomerManager(PathModel pathModel) : base(pathModel)
         {
 
+        }
+        private static CustomerManager _customerManager;
+
+        public static CustomerManager CreateAsSingleton(PathModel pathModel)
+        {
+            if (_customerManager == null)
+            {
+                if (_customerManager == null)
+                {
+                    _customerManager = new CustomerManager(pathModel);
+                }
+
+            }
+
+            return _customerManager;
         }
         public Customer GetById(int id)
         {
@@ -29,7 +44,8 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
 
         public Result Delete(Customer customer)
         {
-            if (Entities.Contains(customer))
+            bool res = Entities.Find(I => I.Id == customer.Id && I.Name == customer.Name && I.Surname == customer.Surname) == null ? false : true;
+            if (res)
             {
                 return base.Delete(Entities.FindIndex(I => I.Id == customer.Id));
             }

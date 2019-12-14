@@ -10,7 +10,8 @@ namespace SiparisOtomasyonu.Entities.Entity
 {
     public class OrderDetail : IEntity
     {
-        public int Id { get; set; }
+        public int Id { get; set; } = 1;
+
         public int OrderId { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }

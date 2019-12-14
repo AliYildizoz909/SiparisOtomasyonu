@@ -36,7 +36,7 @@
             this.txtCashAmount = new System.Windows.Forms.TextBox();
             this.dtGridCash = new System.Windows.Forms.DataGridView();
             this.btnCashCreate = new System.Windows.Forms.Button();
-            this.btnCashUpdata = new System.Windows.Forms.Button();
+            this.btnCashUpdate = new System.Windows.Forms.Button();
             this.btnCashDelete = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -105,7 +105,7 @@
             this.groupBox4.Controls.Add(this.txtCashAmount);
             this.groupBox4.Controls.Add(this.dtGridCash);
             this.groupBox4.Controls.Add(this.btnCashCreate);
-            this.groupBox4.Controls.Add(this.btnCashUpdata);
+            this.groupBox4.Controls.Add(this.btnCashUpdate);
             this.groupBox4.Controls.Add(this.btnCashDelete);
             this.groupBox4.Location = new System.Drawing.Point(5, 62);
             this.groupBox4.Name = "groupBox4";
@@ -166,14 +166,15 @@
             this.btnCashCreate.UseVisualStyleBackColor = true;
             this.btnCashCreate.Click += new System.EventHandler(this.btnCashCreate_Click);
             // 
-            // btnCashUpdata
+            // btnCashUpdate
             // 
-            this.btnCashUpdata.Location = new System.Drawing.Point(169, 91);
-            this.btnCashUpdata.Name = "btnCashUpdata";
-            this.btnCashUpdata.Size = new System.Drawing.Size(102, 28);
-            this.btnCashUpdata.TabIndex = 31;
-            this.btnCashUpdata.Text = "Update";
-            this.btnCashUpdata.UseVisualStyleBackColor = true;
+            this.btnCashUpdate.Location = new System.Drawing.Point(169, 91);
+            this.btnCashUpdate.Name = "btnCashUpdate";
+            this.btnCashUpdate.Size = new System.Drawing.Size(102, 28);
+            this.btnCashUpdate.TabIndex = 31;
+            this.btnCashUpdate.Text = "Update";
+            this.btnCashUpdate.UseVisualStyleBackColor = true;
+            this.btnCashUpdate.Click += new System.EventHandler(this.btnCashUpdate_Click);
             // 
             // btnCashDelete
             // 
@@ -183,6 +184,7 @@
             this.btnCashDelete.TabIndex = 32;
             this.btnCashDelete.Text = "Delete";
             this.btnCashDelete.UseVisualStyleBackColor = true;
+            this.btnCashDelete.Click += new System.EventHandler(this.btnCashDelete_Click);
             // 
             // label11
             // 
@@ -277,6 +279,7 @@
             this.btCheckUpdate.TabIndex = 31;
             this.btCheckUpdate.Text = "Update";
             this.btCheckUpdate.UseVisualStyleBackColor = true;
+            this.btCheckUpdate.Click += new System.EventHandler(this.btCheckUpdate_Click);
             // 
             // btnCheckDelete
             // 
@@ -286,6 +289,7 @@
             this.btnCheckDelete.TabIndex = 32;
             this.btnCheckDelete.Text = "Delete";
             this.btnCheckDelete.UseVisualStyleBackColor = true;
+            this.btnCheckDelete.Click += new System.EventHandler(this.btnCheckDelete_Click);
             // 
             // btnCheckCreate
             // 
@@ -439,6 +443,7 @@
             this.btnCreditUpdate.TabIndex = 31;
             this.btnCreditUpdate.Text = "Update";
             this.btnCreditUpdate.UseVisualStyleBackColor = true;
+            this.btnCreditUpdate.Click += new System.EventHandler(this.btnCreditUpdate_Click);
             // 
             // btnCreditDelete
             // 
@@ -448,6 +453,7 @@
             this.btnCreditDelete.TabIndex = 32;
             this.btnCreditDelete.Text = "Delete";
             this.btnCreditDelete.UseVisualStyleBackColor = true;
+            this.btnCreditDelete.Click += new System.EventHandler(this.btnCreditDelete_Click);
             // 
             // btnCreditCreate
             // 
@@ -589,7 +595,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCashAmount;
         private System.Windows.Forms.DataGridView dtGridCash;
-        private System.Windows.Forms.Button btnCashUpdata;
+        private System.Windows.Forms.Button btnCashUpdate;
         private System.Windows.Forms.Button btnCashDelete;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtCheckId;
