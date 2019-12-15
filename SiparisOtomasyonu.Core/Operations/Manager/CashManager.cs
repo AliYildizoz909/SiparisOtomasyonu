@@ -33,7 +33,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
         public override Result Add(Cash entity)
         {
             entity.Id = Entities.Count != 0 ? Entities[Entities.Count - 1].Id + 1 : 1;
-            _orderManager = OrderManager.CreateAsSingleton(ConstHelper.OrderPathModel);
+            _orderManager = OrderManager.CreateAsSingleton(PathHelper.OrderPathModel);
             Order order = _orderManager.Entities.Find(I => I.Id == entity.OrderId);
             if (order != null)
             {
@@ -47,7 +47,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
             bool res = Entities.Find(I => I.Id == cash.Id && I.OrderId == cash.OrderId) != null;
             if (res)
             {
-                _orderManager = OrderManager.CreateAsSingleton(ConstHelper.OrderPathModel);
+                _orderManager = OrderManager.CreateAsSingleton(PathHelper.OrderPathModel);
                 Order order = _orderManager.Entities.Find(I => I.Id == cash.OrderId);
                 if (order != null)
                 {

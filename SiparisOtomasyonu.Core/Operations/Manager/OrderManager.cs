@@ -21,11 +21,11 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
         private static OrderManager _orderManager;
         private OrderManager(PathModel pathModel = null) : base(pathModel)
         {
-            _customerManager = CustomerManager.CreateAsSingleton(ConstHelper.CustomerPathModel);
-            _creditManager = CreditManager.CreateAsSingleton(ConstHelper.CreditPathModel);
-            _cashManager = CashManager.CreateAsSingleton(ConstHelper.CashPathModel);
-            _checkManager = CheckManager.CreateAsSingleton(ConstHelper.CheckPathModel);
-            _orderDetailManager = OrderDetailManager.CreateAsSingleton(ConstHelper.OrderDetailPathModel);
+            _customerManager = CustomerManager.CreateAsSingleton(PathHelper.CustomerPathModel);
+            _creditManager = CreditManager.CreateAsSingleton(PathHelper.CreditPathModel);
+            _cashManager = CashManager.CreateAsSingleton(PathHelper.CashPathModel);
+            _checkManager = CheckManager.CreateAsSingleton(PathHelper.CheckPathModel);
+            _orderDetailManager = OrderDetailManager.CreateAsSingleton(PathHelper.OrderDetailPathModel);
         }
 
         public static OrderManager CreateAsSingleton(PathModel pathModel)

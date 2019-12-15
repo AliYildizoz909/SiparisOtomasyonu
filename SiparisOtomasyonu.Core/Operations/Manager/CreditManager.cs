@@ -17,7 +17,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
         private OrderManager _orderManager;
         public CreditManager(PathModel pathModel) : base(pathModel)
         {
-            _customerManager = CustomerManager.CreateAsSingleton(ConstHelper.CustomerPathModel);
+            _customerManager = CustomerManager.CreateAsSingleton(PathHelper.CustomerPathModel);
         }
         private static CreditManager _creditManager;
         public static CreditManager CreateAsSingleton(PathModel pathModel)
@@ -38,7 +38,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
         public override Result Add(Credit entity)
         {
             entity.Id = Entities.Count != 0 ? Entities[Entities.Count - 1].Id + 1 : 1;
-            _orderManager = OrderManager.CreateAsSingleton(ConstHelper.OrderPathModel);
+            _orderManager = OrderManager.CreateAsSingleton(PathHelper.OrderPathModel);
             Order order = _orderManager.Entities.Find(I => I.Id == entity.OrderId);
             if (order != null)
             {
@@ -52,7 +52,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
             bool res = Entities.Find(I => I.Id == credit.Id && I.OrderId == credit.OrderId) != null;
             if (res)
             {
-                _orderManager = OrderManager.CreateAsSingleton(ConstHelper.OrderPathModel);
+                _orderManager = OrderManager.CreateAsSingleton(PathHelper.OrderPathModel);
                 Order order = _orderManager.Entities.Find(I => I.Id == credit.OrderId);
                 if (order != null)
                 {
@@ -75,7 +75,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
 
         public bool Authorized(string name, string surname, int orderId)
         {
-            _orderManager = OrderManager.CreateAsSingleton(ConstHelper.OrderPathModel);
+            _orderManager = OrderManager.CreateAsSingleton(PathHelper.OrderPathModel);
             bool result = false;
           
             

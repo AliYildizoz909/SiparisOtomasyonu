@@ -35,7 +35,18 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
             Customer customer = Entities.FirstOrDefault(I => I.Id == id);
             return customer;
         }
+        public Result Login(Customer customer)
+        {
+            Result result = new Result { ResultState = ResultState.Erorr, Message = "Giriş başarısız." };
+            Customer user = Entities.Find(I => I.UserName == customer.UserName && I.Password == customer.Password);
+            if (user != null)
+            {
+                result.ResultState = ResultState.Success;
+                result.Message = "Giriş başarılı";
+            }
 
+            return result;
+        }
         public override Result Add(Customer entity)
         {
             entity.Id = Entities.Count != 0 ? Entities[Entities.Count - 1].Id + 1 : 1;
@@ -44,7 +55,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
 
         public Result Delete(Customer customer)
         {
-            bool res = Entities.Find(I => I.Id == customer.Id && I.Name == customer.Name && I.Surname == customer.Surname) == null ? false : true;
+            bool res = Entities.Find(I => I.Id == customer.Id && I.Name == customer.Name && I.Surname == customer.Surname) != null;
             if (res)
             {
                 return base.Delete(Entities.FindIndex(I => I.Id == customer.Id));

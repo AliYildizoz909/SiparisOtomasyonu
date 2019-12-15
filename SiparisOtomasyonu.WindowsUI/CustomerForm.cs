@@ -25,8 +25,8 @@ namespace SiparisOtomasyonu.WindowsUI
         {
             InitializeComponent();
 
-            _customerManager = CustomerManager.CreateAsSingleton(ConstHelper.CustomerPathModel);
-            _orderManager = OrderManager.CreateAsSingleton(ConstHelper.OrderPathModel);
+            _customerManager = CustomerManager.CreateAsSingleton(PathHelper.CustomerPathModel);
+            _orderManager = OrderManager.CreateAsSingleton(PathHelper.OrderPathModel);
         }
 
 
@@ -91,23 +91,6 @@ namespace SiparisOtomasyonu.WindowsUI
 
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            Result result = _customerManager.Delete(new Customer
-            {
-                Id = int.Parse(txtId.Text)
-            });
-            if (result.ResultState == ResultState.Erorr)
-            {
-                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
-            }
-            else
-            {
-                DataGridCustomerFill();
-                TextboxCustomerClear();
-            }
-
-        }
         private void btnFind_Click(object sender, EventArgs e)
         {
             List<Customer> customers = _customerManager.Entities.Where(I => I.Name.Contains(txtFind.Text)).ToList();
@@ -294,6 +277,23 @@ namespace SiparisOtomasyonu.WindowsUI
         {
             PaymentForm paymentForm = new PaymentForm(0, int.Parse(txtOrderId.Text));
             paymentForm.Show();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Result result = _customerManager.Delete(new Customer
+            {
+                Id = int.Parse(txtId.Text)
+            });
+            if (result.ResultState == ResultState.Erorr)
+            {
+                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
+            }
+            else
+            {
+                DataGridCustomerFill();
+                TextboxCustomerClear();
+            }
         }
     }
 }

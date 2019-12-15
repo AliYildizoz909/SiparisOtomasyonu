@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,22 +18,24 @@ namespace SiparisOtomasyonu.WindowsUI
     public partial class OrderDetailForm : Form
     {
         private OrderDetailManager _orderDetailManager;
+        private ItemManager _itemManager;
         private int _orderId;
         public OrderDetailForm(int orderId = 0)
         {
             _orderId = orderId;
             InitializeComponent();
-            _orderDetailManager = OrderDetailManager.CreateAsSingleton(ConstHelper.OrderDetailPathModel);
+            _orderDetailManager = OrderDetailManager.CreateAsSingleton(PathHelper.OrderDetailPathModel);
+            _itemManager = ItemManager.CreateAsSingleton(PathHelper.ItemPathModel);
         }
 
         private void dtGridList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dataGridView = (DataGridView)sender;
             DataGridViewCellCollection cellCollection = dataGridView.SelectedRows[0].Cells;
-            CustomerTextboxFill(cellCollection);
+            OrderDetailTextboxFill(cellCollection);
         }
 
-        private void CustomerTextboxFill(DataGridViewCellCollection cellCollection)
+        private void OrderDetailTextboxFill(DataGridViewCellCollection cellCollection)
         {
             cmbTax.Text = "";
             txtId.Text = cellCollection[0].Value.ToString();
@@ -70,7 +73,7 @@ namespace SiparisOtomasyonu.WindowsUI
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if (_orderId != 0)
+            if (_orderId != 0 && !string.IsNullOrEmpty(txtOrderDetailtemId.Text))
             {
                 OrderDetail orderDetail = new OrderDetail
                 {
@@ -94,7 +97,7 @@ namespace SiparisOtomasyonu.WindowsUI
             }
             else
             {
-                MessageBox.Show("Order Id boş geçilemez", "Hata işlem yapılamadı");
+                MessageBox.Show("Order id ve Item id boş geçilemez", "Hata işlem yapılamadı");
             }
 
         }
@@ -180,6 +183,101 @@ namespace SiparisOtomasyonu.WindowsUI
         {
             PaymentForm paymentForm = new PaymentForm(decimal.Parse(lblSubTotal.Text), int.Parse(txtOrderId.Text));
             paymentForm.Show();
+        }
+
+        private void dtGridItem_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGridView = (DataGridView)sender;
+            DataGridViewCellCollection cellCollection = dataGridView.SelectedRows[0].Cells;
+            ItemTextboxFill(cellCollection);
+            DataGridFillForOrdetail(int.Parse(txtItemId.Text));
+        }
+
+        private void DataGridFillForOrdetail(int itemId)
+        {
+            dtGridList.DataSource = null;
+            dtGridList.DataSource = _itemManager.Entities.Find(I => I.Id == itemId).OrderDetails.OrderBy(I => I.Id);
+
+        }
+
+        private void ItemTextboxFill(DataGridViewCellCollection cellCollection)
+        {
+            txtItemId.Text = cellCollection[0].Value.ToString();
+            txtDescription.Text = cellCollection[1].Value.ToString();
+            GetCalc(int.Parse(txtItemId.Text));
+        }
+
+        private void GetCalc(int itemId)
+        {
+            Item item = _itemManager.GetById(itemId);
+            lblGetWeight.Text = item.GetWeight().ToString();
+            lblPriceForQuantity.Text = item.GetPriceForQuantity().ToString();
+        }
+
+        private void btnItemCreate_Click(object sender, EventArgs e)
+        {
+            Item item = new Item
+            {
+                Id = int.Parse(txtId.Text),
+                Description = txtDescription.Text
+            };
+            Result result = _itemManager.Add(item);
+            if (result.ResultState == ResultState.Erorr)
+            {
+                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
+            }
+            else
+            {
+                ItemDataGridFill();
+                txtItemId.Text = "";
+                txtDescription.Text = "";
+            }
+        }
+
+        private void btnItemUpdate_Click(object sender, EventArgs e)
+        {
+            Item item = new Item
+            {
+                Id = int.Parse(txtId.Text),
+                Description = txtDescription.Text
+            };
+            Result result = _itemManager.Update(item);
+            if (result.ResultState == ResultState.Erorr)
+            {
+                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
+            }
+            else
+            {
+                ItemDataGridFill();
+                txtItemId.Text = "";
+                txtDescription.Text = "";
+            }
+        }
+
+        private void btnItemDelete_Click(object sender, EventArgs e)
+        {
+            Item item = new Item
+            {
+                Id = int.Parse(txtId.Text),
+                Description = txtDescription.Text
+            };
+            Result result = _itemManager.Delete(item);
+            if (result.ResultState == ResultState.Erorr)
+            {
+                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
+            }
+            else
+            {
+                ItemDataGridFill();
+                txtItemId.Text = "";
+                txtDescription.Text = "";
+            }
+        }
+
+        private void ItemDataGridFill()
+        {
+            dtGridItem.DataSource = null;
+            dtGridItem.DataSource = _itemManager.Entities.OrderBy(I => I.Id);
         }
     }
 }

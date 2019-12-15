@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SiparisOtomasyonu.Entities.Entity.Abstract;
 
 namespace SiparisOtomasyonu.Entities.Entity
 {
-    public class Item
+    public class Item : IEntity
     {
+        public Item()
+        {
+            OrderDetails = new List<OrderDetail>();
+        }
+        public int Id { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
         public string Description { get; set; }
-
-        public decimal ShippingWeight
-        {
-            get { return GetWeight(); }
-        }
-        public decimal PriceForQuantity
-        {
-            get { return GetPriceForQuantity(); }
-        }
 
         public decimal GetWeight()
         {

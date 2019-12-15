@@ -15,7 +15,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
         private OrderManager _orderManager;
         private CheckManager(PathModel pathModel) : base(pathModel)
         {
-            _customerManager = CustomerManager.CreateAsSingleton(new PathModel { DirectoryName = ConstHelper.customerDirectoryName, FileName = ConstHelper.customerFileName });
+            _customerManager = CustomerManager.CreateAsSingleton(PathHelper.CustomerPathModel);
         }
         private static CheckManager _checkManager;
         public static CheckManager CreateAsSingleton(PathModel pathModel)
@@ -36,7 +36,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
         public override Result Add(Check entity)
         {
             entity.Id = Entities.Count != 0 ? Entities[Entities.Count - 1].Id + 1 : 1;
-            _orderManager = OrderManager.CreateAsSingleton(ConstHelper.OrderPathModel);
+            _orderManager = OrderManager.CreateAsSingleton(PathHelper.OrderPathModel);
             Order order = _orderManager.Entities.Find(I => I.Id == entity.OrderId);
             if (order != null)
             {
@@ -50,7 +50,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
             bool res = Entities.Find(I => I.Id == check.Id && I.OrderId == check.OrderId) != null;
             if (res)
             {
-                _orderManager = OrderManager.CreateAsSingleton(ConstHelper.OrderPathModel);
+                _orderManager = OrderManager.CreateAsSingleton(PathHelper.OrderPathModel);
                 Order order = _orderManager.Entities.Find(I => I.Id == check.OrderId);
                 if (order != null)
                 {
@@ -72,7 +72,7 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
         }
         public bool Authorized(string name, string surname, int orderId)
         {
-            _orderManager = OrderManager.CreateAsSingleton(ConstHelper.OrderPathModel);
+            _orderManager = OrderManager.CreateAsSingleton(PathHelper.OrderPathModel);
             bool result = false;
 
             Order order = _orderManager.GetById(orderId);

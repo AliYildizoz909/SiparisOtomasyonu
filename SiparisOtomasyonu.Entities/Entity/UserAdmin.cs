@@ -7,7 +7,7 @@ using SiparisOtomasyonu.Entities.Entity.Abstract;
 
 namespace SiparisOtomasyonu.Entities.Entity
 {
-    public class UserAdmin : Abstract.IEntity
+    public class UserAdmin : IEntity
     {
         public int Id { get; set; }
         public string UserName { get; set; }

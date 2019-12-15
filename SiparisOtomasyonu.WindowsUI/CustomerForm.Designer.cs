@@ -44,34 +44,34 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCustomerClear = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.txtFind = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnOrderClear = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtOrderId = new System.Windows.Forms.TextBox();
-            this.txtCustomerId = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.Date = new System.Windows.Forms.Label();
-            this.dtPickerOrder = new System.Windows.Forms.DateTimePicker();
-            this.btnPayments = new System.Windows.Forms.Button();
-            this.btnOrderDetails = new System.Windows.Forms.Button();
-            this.btnOrderDelete = new System.Windows.Forms.Button();
-            this.btnOrderCreate = new System.Windows.Forms.Button();
-            this.btnOrderUpdate = new System.Windows.Forms.Button();
             this.dtGridOrders = new System.Windows.Forms.DataGridView();
+            this.btnOrderUpdate = new System.Windows.Forms.Button();
+            this.btnOrderCreate = new System.Windows.Forms.Button();
+            this.btnOrderDelete = new System.Windows.Forms.Button();
+            this.btnOrderDetails = new System.Windows.Forms.Button();
+            this.btnPayments = new System.Windows.Forms.Button();
+            this.dtPickerOrder = new System.Windows.Forms.DateTimePicker();
+            this.Date = new System.Windows.Forms.Label();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCustomerId = new System.Windows.Forms.TextBox();
+            this.txtOrderId = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnOrderClear = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridList)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridOrders)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtName
@@ -125,7 +125,7 @@
             this.dtGridList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridList.Location = new System.Drawing.Point(286, 59);
             this.dtGridList.Name = "dtGridList";
-            this.dtGridList.Size = new System.Drawing.Size(645, 416);
+            this.dtGridList.Size = new System.Drawing.Size(623, 416);
             this.dtGridList.TabIndex = 30;
             this.dtGridList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridList_CellDoubleClick);
             // 
@@ -194,9 +194,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnCustomerClear);
+            this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.btnCreate);
-            this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txtUserName);
@@ -226,6 +226,16 @@
             this.btnCustomerClear.UseVisualStyleBackColor = true;
             this.btnCustomerClear.Click += new System.EventHandler(this.btnCustomerClear_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(68, 289);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(89, 28);
+            this.btnDelete.TabIndex = 31;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(166, 289);
@@ -245,15 +255,6 @@
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click_1);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(71, 289);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(89, 28);
-            this.btnDelete.TabIndex = 32;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -293,6 +294,150 @@
             this.label1.TabIndex = 35;
             this.label1.Text = "Name";
             // 
+            // dtGridOrders
+            // 
+            this.dtGridOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridOrders.Location = new System.Drawing.Point(274, 19);
+            this.dtGridOrders.Name = "dtGridOrders";
+            this.dtGridOrders.Size = new System.Drawing.Size(617, 210);
+            this.dtGridOrders.TabIndex = 30;
+            this.dtGridOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridOrders_CellDoubleClick);
+            // 
+            // btnOrderUpdate
+            // 
+            this.btnOrderUpdate.Location = new System.Drawing.Point(17, 124);
+            this.btnOrderUpdate.Name = "btnOrderUpdate";
+            this.btnOrderUpdate.Size = new System.Drawing.Size(108, 31);
+            this.btnOrderUpdate.TabIndex = 57;
+            this.btnOrderUpdate.Text = "Update";
+            this.btnOrderUpdate.UseVisualStyleBackColor = true;
+            this.btnOrderUpdate.Click += new System.EventHandler(this.btnOrderUpdate_Click);
+            // 
+            // btnOrderCreate
+            // 
+            this.btnOrderCreate.Location = new System.Drawing.Point(135, 124);
+            this.btnOrderCreate.Name = "btnOrderCreate";
+            this.btnOrderCreate.Size = new System.Drawing.Size(111, 31);
+            this.btnOrderCreate.TabIndex = 56;
+            this.btnOrderCreate.Text = "Create";
+            this.btnOrderCreate.UseVisualStyleBackColor = true;
+            this.btnOrderCreate.Click += new System.EventHandler(this.btnOrderCreate_Click);
+            // 
+            // btnOrderDelete
+            // 
+            this.btnOrderDelete.Location = new System.Drawing.Point(80, 161);
+            this.btnOrderDelete.Name = "btnOrderDelete";
+            this.btnOrderDelete.Size = new System.Drawing.Size(111, 31);
+            this.btnOrderDelete.TabIndex = 56;
+            this.btnOrderDelete.Text = "Delete";
+            this.btnOrderDelete.UseVisualStyleBackColor = true;
+            this.btnOrderDelete.Click += new System.EventHandler(this.btnOrderDelete_Click);
+            // 
+            // btnOrderDetails
+            // 
+            this.btnOrderDetails.Location = new System.Drawing.Point(14, 198);
+            this.btnOrderDetails.Name = "btnOrderDetails";
+            this.btnOrderDetails.Size = new System.Drawing.Size(111, 31);
+            this.btnOrderDetails.TabIndex = 56;
+            this.btnOrderDetails.Text = "Order Details";
+            this.btnOrderDetails.UseVisualStyleBackColor = true;
+            this.btnOrderDetails.Click += new System.EventHandler(this.btnOrderDetails_Click);
+            // 
+            // btnPayments
+            // 
+            this.btnPayments.Location = new System.Drawing.Point(135, 198);
+            this.btnPayments.Name = "btnPayments";
+            this.btnPayments.Size = new System.Drawing.Size(111, 31);
+            this.btnPayments.TabIndex = 56;
+            this.btnPayments.Text = "Payments";
+            this.btnPayments.UseVisualStyleBackColor = true;
+            this.btnPayments.Click += new System.EventHandler(this.btnPayments_Click);
+            // 
+            // dtPickerOrder
+            // 
+            this.dtPickerOrder.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtPickerOrder.Location = new System.Drawing.Point(80, 45);
+            this.dtPickerOrder.Name = "dtPickerOrder";
+            this.dtPickerOrder.Size = new System.Drawing.Size(169, 20);
+            this.dtPickerOrder.TabIndex = 58;
+            this.dtPickerOrder.Value = new System.DateTime(2019, 12, 12, 0, 0, 0, 0);
+            // 
+            // Date
+            // 
+            this.Date.AutoSize = true;
+            this.Date.Location = new System.Drawing.Point(11, 45);
+            this.Date.Name = "Date";
+            this.Date.Size = new System.Drawing.Size(30, 13);
+            this.Date.TabIndex = 55;
+            this.Date.Text = "Date";
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "New Order",
+            "Wait",
+            "Road",
+            "Reached",
+            "Cancelled"});
+            this.cmbStatus.Location = new System.Drawing.Point(80, 71);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(168, 21);
+            this.cmbStatus.TabIndex = 59;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.TabIndex = 53;
+            this.label3.Text = "Status";
+            // 
+            // txtCustomerId
+            // 
+            this.txtCustomerId.Enabled = false;
+            this.txtCustomerId.Location = new System.Drawing.Point(80, 98);
+            this.txtCustomerId.Name = "txtCustomerId";
+            this.txtCustomerId.Size = new System.Drawing.Size(169, 20);
+            this.txtCustomerId.TabIndex = 60;
+            // 
+            // txtOrderId
+            // 
+            this.txtOrderId.Enabled = false;
+            this.txtOrderId.Location = new System.Drawing.Point(80, 19);
+            this.txtOrderId.Name = "txtOrderId";
+            this.txtOrderId.Size = new System.Drawing.Size(169, 20);
+            this.txtOrderId.TabIndex = 52;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.TabIndex = 61;
+            this.label5.Text = "Customer id";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(16, 13);
+            this.label4.TabIndex = 54;
+            this.label4.Text = "Id";
+            // 
+            // btnOrderClear
+            // 
+            this.btnOrderClear.Location = new System.Drawing.Point(14, 165);
+            this.btnOrderClear.Name = "btnOrderClear";
+            this.btnOrderClear.Size = new System.Drawing.Size(58, 23);
+            this.btnOrderClear.TabIndex = 62;
+            this.btnOrderClear.Text = "Clear";
+            this.btnOrderClear.UseVisualStyleBackColor = true;
+            this.btnOrderClear.Click += new System.EventHandler(this.btnOrderClear_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnOrderClear);
@@ -312,160 +457,16 @@
             this.groupBox3.Controls.Add(this.dtGridOrders);
             this.groupBox3.Location = new System.Drawing.Point(12, 481);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(930, 239);
+            this.groupBox3.Size = new System.Drawing.Size(897, 239);
             this.groupBox3.TabIndex = 37;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Order info";
-            // 
-            // btnOrderClear
-            // 
-            this.btnOrderClear.Location = new System.Drawing.Point(14, 165);
-            this.btnOrderClear.Name = "btnOrderClear";
-            this.btnOrderClear.Size = new System.Drawing.Size(58, 23);
-            this.btnOrderClear.TabIndex = 62;
-            this.btnOrderClear.Text = "Clear";
-            this.btnOrderClear.UseVisualStyleBackColor = true;
-            this.btnOrderClear.Click += new System.EventHandler(this.btnOrderClear_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 13);
-            this.label4.TabIndex = 54;
-            this.label4.Text = "Id";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 98);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 13);
-            this.label5.TabIndex = 61;
-            this.label5.Text = "Customer id";
-            // 
-            // txtOrderId
-            // 
-            this.txtOrderId.Enabled = false;
-            this.txtOrderId.Location = new System.Drawing.Point(80, 19);
-            this.txtOrderId.Name = "txtOrderId";
-            this.txtOrderId.Size = new System.Drawing.Size(169, 20);
-            this.txtOrderId.TabIndex = 52;
-            // 
-            // txtCustomerId
-            // 
-            this.txtCustomerId.Enabled = false;
-            this.txtCustomerId.Location = new System.Drawing.Point(80, 98);
-            this.txtCustomerId.Name = "txtCustomerId";
-            this.txtCustomerId.Size = new System.Drawing.Size(169, 20);
-            this.txtCustomerId.TabIndex = 60;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 53;
-            this.label3.Text = "Status";
-            // 
-            // cmbStatus
-            // 
-            this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Items.AddRange(new object[] {
-            "New Order",
-            "Wait",
-            "Road",
-            "Reached",
-            "Cancelled"});
-            this.cmbStatus.Location = new System.Drawing.Point(80, 71);
-            this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(168, 21);
-            this.cmbStatus.TabIndex = 59;
-            // 
-            // Date
-            // 
-            this.Date.AutoSize = true;
-            this.Date.Location = new System.Drawing.Point(11, 45);
-            this.Date.Name = "Date";
-            this.Date.Size = new System.Drawing.Size(30, 13);
-            this.Date.TabIndex = 55;
-            this.Date.Text = "Date";
-            // 
-            // dtPickerOrder
-            // 
-            this.dtPickerOrder.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtPickerOrder.Location = new System.Drawing.Point(80, 45);
-            this.dtPickerOrder.Name = "dtPickerOrder";
-            this.dtPickerOrder.Size = new System.Drawing.Size(169, 20);
-            this.dtPickerOrder.TabIndex = 58;
-            this.dtPickerOrder.Value = new System.DateTime(2019, 12, 12, 0, 0, 0, 0);
-            // 
-            // btnPayments
-            // 
-            this.btnPayments.Location = new System.Drawing.Point(135, 198);
-            this.btnPayments.Name = "btnPayments";
-            this.btnPayments.Size = new System.Drawing.Size(111, 31);
-            this.btnPayments.TabIndex = 56;
-            this.btnPayments.Text = "Payments";
-            this.btnPayments.UseVisualStyleBackColor = true;
-            this.btnPayments.Click += new System.EventHandler(this.btnPayments_Click);
-            // 
-            // btnOrderDetails
-            // 
-            this.btnOrderDetails.Location = new System.Drawing.Point(14, 198);
-            this.btnOrderDetails.Name = "btnOrderDetails";
-            this.btnOrderDetails.Size = new System.Drawing.Size(111, 31);
-            this.btnOrderDetails.TabIndex = 56;
-            this.btnOrderDetails.Text = "Order Details";
-            this.btnOrderDetails.UseVisualStyleBackColor = true;
-            this.btnOrderDetails.Click += new System.EventHandler(this.btnOrderDetails_Click);
-            // 
-            // btnOrderDelete
-            // 
-            this.btnOrderDelete.Location = new System.Drawing.Point(80, 161);
-            this.btnOrderDelete.Name = "btnOrderDelete";
-            this.btnOrderDelete.Size = new System.Drawing.Size(111, 31);
-            this.btnOrderDelete.TabIndex = 56;
-            this.btnOrderDelete.Text = "Delete";
-            this.btnOrderDelete.UseVisualStyleBackColor = true;
-            this.btnOrderDelete.Click += new System.EventHandler(this.btnOrderDelete_Click);
-            // 
-            // btnOrderCreate
-            // 
-            this.btnOrderCreate.Location = new System.Drawing.Point(135, 124);
-            this.btnOrderCreate.Name = "btnOrderCreate";
-            this.btnOrderCreate.Size = new System.Drawing.Size(111, 31);
-            this.btnOrderCreate.TabIndex = 56;
-            this.btnOrderCreate.Text = "Create";
-            this.btnOrderCreate.UseVisualStyleBackColor = true;
-            this.btnOrderCreate.Click += new System.EventHandler(this.btnOrderCreate_Click);
-            // 
-            // btnOrderUpdate
-            // 
-            this.btnOrderUpdate.Location = new System.Drawing.Point(17, 124);
-            this.btnOrderUpdate.Name = "btnOrderUpdate";
-            this.btnOrderUpdate.Size = new System.Drawing.Size(108, 31);
-            this.btnOrderUpdate.TabIndex = 57;
-            this.btnOrderUpdate.Text = "Update";
-            this.btnOrderUpdate.UseVisualStyleBackColor = true;
-            this.btnOrderUpdate.Click += new System.EventHandler(this.btnOrderUpdate_Click);
-            // 
-            // dtGridOrders
-            // 
-            this.dtGridOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridOrders.Location = new System.Drawing.Point(274, 19);
-            this.dtGridOrders.Name = "dtGridOrders";
-            this.dtGridOrders.Size = new System.Drawing.Size(645, 210);
-            this.dtGridOrders.TabIndex = 30;
-            this.dtGridOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridOrders_CellDoubleClick);
             // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(948, 728);
+            this.ClientSize = new System.Drawing.Size(921, 724);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -479,9 +480,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridOrders)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -506,28 +507,28 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dtGridOrders;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtOrderId;
-        private System.Windows.Forms.TextBox txtCustomerId;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbStatus;
-        private System.Windows.Forms.Label Date;
-        private System.Windows.Forms.DateTimePicker dtPickerOrder;
-        private System.Windows.Forms.Button btnOrderCreate;
-        private System.Windows.Forms.Button btnOrderUpdate;
-        private System.Windows.Forms.Button btnPayments;
-        private System.Windows.Forms.Button btnOrderDetails;
-        private System.Windows.Forms.Button btnOrderDelete;
         private System.Windows.Forms.Button btnCustomerClear;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.DataGridView dtGridOrders;
+        private System.Windows.Forms.Button btnOrderUpdate;
+        private System.Windows.Forms.Button btnOrderCreate;
+        private System.Windows.Forms.Button btnOrderDelete;
+        private System.Windows.Forms.Button btnOrderDetails;
+        private System.Windows.Forms.Button btnPayments;
+        private System.Windows.Forms.DateTimePicker dtPickerOrder;
+        private System.Windows.Forms.Label Date;
+        private System.Windows.Forms.ComboBox cmbStatus;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtCustomerId;
+        private System.Windows.Forms.TextBox txtOrderId;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnOrderClear;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
 

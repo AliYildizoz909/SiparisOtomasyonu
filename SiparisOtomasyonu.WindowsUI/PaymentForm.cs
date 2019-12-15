@@ -28,9 +28,9 @@ namespace SiparisOtomasyonu.WindowsUI
             _amount = amount;
             _orderId = orderId;
             InitializeComponent();
-            _creditManager = CreditManager.CreateAsSingleton(ConstHelper.CreditPathModel);
-            _cashManager = CashManager.CreateAsSingleton(ConstHelper.CashPathModel);
-            _checkManager = CheckManager.CreateAsSingleton(ConstHelper.CheckPathModel);
+            _creditManager = CreditManager.CreateAsSingleton(PathHelper.CreditPathModel);
+            _cashManager = CashManager.CreateAsSingleton(PathHelper.CashPathModel);
+            _checkManager = CheckManager.CreateAsSingleton(PathHelper.CheckPathModel);
         }
 
         void DataGridCashFill()
