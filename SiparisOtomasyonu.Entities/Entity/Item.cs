@@ -33,7 +33,7 @@ namespace SiparisOtomasyonu.Entities.Entity
             decimal priceForQuantity = 0;
             foreach (var orderDetail in OrderDetails)
             {
-                priceForQuantity += orderDetail.SubWeight;
+                priceForQuantity += orderDetail.SubTotal;
             }
 
             return priceForQuantity;

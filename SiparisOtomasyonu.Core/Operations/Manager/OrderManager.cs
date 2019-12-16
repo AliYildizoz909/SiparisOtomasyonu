@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SiparisOtomasyonu.Core.Operations.Abstract;
 using SiparisOtomasyonu.Core.Operations.Helpers;
 using SiparisOtomasyonu.Entities.Entity;
 using SiparisOtomasyonu.Entities.Entity.Enums;
 
 namespace SiparisOtomasyonu.Core.Operations.Manager
 {
-    public class OrderManager : RepositoryBase<Order>, IManager
+    public class OrderManager : RepositoryBase<Order>
     {
 
         private CreditManager _creditManager;

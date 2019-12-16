@@ -149,6 +149,7 @@
             // 
             // dtGridCash
             // 
+            this.dtGridCash.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGridCash.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridCash.Location = new System.Drawing.Point(289, 19);
             this.dtGridCash.Name = "dtGridCash";
@@ -247,6 +248,7 @@
             // 
             // dtGridCheckList
             // 
+            this.dtGridCheckList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGridCheckList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridCheckList.Location = new System.Drawing.Point(288, 28);
             this.dtGridCheckList.Name = "dtGridCheckList";
@@ -403,6 +405,7 @@
             // 
             // dtGridCreditList
             // 
+            this.dtGridCreditList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGridCreditList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridCreditList.Location = new System.Drawing.Point(289, 19);
             this.dtGridCreditList.Name = "dtGridCreditList";

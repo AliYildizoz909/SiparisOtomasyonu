@@ -40,13 +40,14 @@ namespace SiparisOtomasyonu.WindowsUI
             cmbTax.Text = "";
             txtId.Text = cellCollection[0].Value.ToString();
 
-            txtOrderId.Text = cellCollection[1].Value.ToString();
-            nudQuantity.Text = cellCollection[2].Value.ToString();
-            nudPrice.Text = cellCollection[3].Value.ToString();
-            cmbTax.Text = cellCollection[4].Value.ToString();
-            nudWeight.Text = cellCollection[5].Value.ToString();
-            lblSubWeight.Text = cellCollection[6].Value.ToString();
-            lblSubTotal.Text = cellCollection[7].Value.ToString();
+            txtOrderDetailtemId.Text = cellCollection[1].Value.ToString();
+            txtOrderId.Text = cellCollection[2].Value.ToString();
+            nudQuantity.Text = cellCollection[3].Value.ToString();
+            nudPrice.Text = cellCollection[4].Value.ToString();
+            cmbTax.Text = cellCollection[5].Value.ToString();
+            nudWeight.Text = cellCollection[6].Value.ToString();
+            lblSubWeight.Text = cellCollection[7].Value.ToString();
+            lblSubTotal.Text = cellCollection[8].Value.ToString();
         }
 
         private void OrderDetailForm_Load(object sender, EventArgs e)
@@ -73,11 +74,12 @@ namespace SiparisOtomasyonu.WindowsUI
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if (_orderId != 0 && !string.IsNullOrEmpty(txtOrderDetailtemId.Text))
+            if (_orderId != 0)
             {
                 OrderDetail orderDetail = new OrderDetail
                 {
                     OrderId = int.Parse(txtOrderId.Text),
+                    ItemId = 0,
                     Price = nudPrice.Value,
                     Quantity = int.Parse(nudQuantity.Text),
                     Weight = nudWeight.Value,
@@ -124,6 +126,7 @@ namespace SiparisOtomasyonu.WindowsUI
             {
                 Id = int.Parse(txtId.Text),
                 OrderId = int.Parse(txtOrderId.Text),
+                ItemId = int.Parse(txtOrderDetailtemId.Text),
                 Price = nudPrice.Value,
                 Quantity = int.Parse(nudQuantity.Text),
                 Weight = nudWeight.Value,
@@ -148,7 +151,8 @@ namespace SiparisOtomasyonu.WindowsUI
             OrderDetail orderDetail = new OrderDetail
             {
                 Id = int.Parse(txtId.Text),
-                OrderId = int.Parse(txtOrderId.Text)
+                OrderId = int.Parse(txtOrderId.Text),
+                ItemId = int.Parse(txtOrderDetailtemId.Text),
             };
             Result result = _orderDetailManager.Delete(orderDetail);
             if (result.ResultState == ResultState.Erorr)
@@ -170,6 +174,7 @@ namespace SiparisOtomasyonu.WindowsUI
         private void TextBoxClear()
         {
             txtOrderId.Text = "";
+            txtOrderDetailtemId.Text = "";
             txtId.Text = "";
             nudPrice.Text = "";
             nudQuantity.Text = "";
@@ -181,103 +186,17 @@ namespace SiparisOtomasyonu.WindowsUI
 
         private void btnPayments_Click(object sender, EventArgs e)
         {
-            PaymentForm paymentForm = new PaymentForm(decimal.Parse(lblSubTotal.Text), int.Parse(txtOrderId.Text));
+            Form form = Application.OpenForms["MDIForm"];
+            PaymentForm paymentForm = new PaymentForm(decimal.Parse(lblSubTotal.Text), int.Parse(txtOrderId.Text)); paymentForm.MdiParent = form;
             paymentForm.Show();
         }
 
-        private void dtGridItem_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void btnItems_Click(object sender, EventArgs e)
         {
-            DataGridView dataGridView = (DataGridView)sender;
-            DataGridViewCellCollection cellCollection = dataGridView.SelectedRows[0].Cells;
-            ItemTextboxFill(cellCollection);
-            DataGridFillForOrdetail(int.Parse(txtItemId.Text));
-        }
-
-        private void DataGridFillForOrdetail(int itemId)
-        {
-            dtGridList.DataSource = null;
-            dtGridList.DataSource = _itemManager.Entities.Find(I => I.Id == itemId).OrderDetails.OrderBy(I => I.Id);
-
-        }
-
-        private void ItemTextboxFill(DataGridViewCellCollection cellCollection)
-        {
-            txtItemId.Text = cellCollection[0].Value.ToString();
-            txtDescription.Text = cellCollection[1].Value.ToString();
-            GetCalc(int.Parse(txtItemId.Text));
-        }
-
-        private void GetCalc(int itemId)
-        {
-            Item item = _itemManager.GetById(itemId);
-            lblGetWeight.Text = item.GetWeight().ToString();
-            lblPriceForQuantity.Text = item.GetPriceForQuantity().ToString();
-        }
-
-        private void btnItemCreate_Click(object sender, EventArgs e)
-        {
-            Item item = new Item
-            {
-                Id = int.Parse(txtId.Text),
-                Description = txtDescription.Text
-            };
-            Result result = _itemManager.Add(item);
-            if (result.ResultState == ResultState.Erorr)
-            {
-                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
-            }
-            else
-            {
-                ItemDataGridFill();
-                txtItemId.Text = "";
-                txtDescription.Text = "";
-            }
-        }
-
-        private void btnItemUpdate_Click(object sender, EventArgs e)
-        {
-            Item item = new Item
-            {
-                Id = int.Parse(txtId.Text),
-                Description = txtDescription.Text
-            };
-            Result result = _itemManager.Update(item);
-            if (result.ResultState == ResultState.Erorr)
-            {
-                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
-            }
-            else
-            {
-                ItemDataGridFill();
-                txtItemId.Text = "";
-                txtDescription.Text = "";
-            }
-        }
-
-        private void btnItemDelete_Click(object sender, EventArgs e)
-        {
-            Item item = new Item
-            {
-                Id = int.Parse(txtId.Text),
-                Description = txtDescription.Text
-            };
-            Result result = _itemManager.Delete(item);
-            if (result.ResultState == ResultState.Erorr)
-            {
-                MessageBox.Show(result.Message, "Hata işlem yapılamadı");
-            }
-            else
-            {
-                ItemDataGridFill();
-                txtItemId.Text = "";
-                txtDescription.Text = "";
-            }
-        }
-
-        private void ItemDataGridFill()
-        {
-            dtGridItem.DataSource = null;
-            dtGridItem.DataSource = _itemManager.Entities.OrderBy(I => I.Id);
+            Form form = Application.OpenForms["MDIForm"];
+            ItemForm itemForm = new ItemForm();
+            itemForm.MdiParent = form;
+            itemForm.Show();
         }
     }
 }

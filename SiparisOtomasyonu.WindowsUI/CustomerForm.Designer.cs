@@ -122,6 +122,7 @@
             // 
             // dtGridList
             // 
+            this.dtGridList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGridList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridList.Location = new System.Drawing.Point(286, 59);
             this.dtGridList.Name = "dtGridList";
@@ -296,6 +297,7 @@
             // 
             // dtGridOrders
             // 
+            this.dtGridOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGridOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridOrders.Location = new System.Drawing.Point(274, 19);
             this.dtGridOrders.Name = "dtGridOrders";

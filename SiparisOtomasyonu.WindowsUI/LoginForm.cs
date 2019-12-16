@@ -39,7 +39,19 @@ namespace SiparisOtomasyonu.WindowsUI
                 });
                 if (result.ResultState == ResultState.Success)
                 {
+                    foreach (Control item in ((Panel)Application.OpenForms["MDIForm"].Controls["pnlMenu"]).Controls)
+                    {
+                        if (item is Button)
+                        {
+                            item.Enabled = true;
+                        }
+                    }
 
+                    Form form = Application.OpenForms["MDIForm"];
+                    AdminMainForm adminMainForm = new AdminMainForm();
+                    adminMainForm.MdiParent = form;
+                    adminMainForm.Show();
+                    this.Close();
                 }
                 else
                 {

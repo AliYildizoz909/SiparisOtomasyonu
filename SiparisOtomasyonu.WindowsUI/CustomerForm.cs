@@ -223,6 +223,7 @@ namespace SiparisOtomasyonu.WindowsUI
 
         private void OrderTextboxFill(DataGridViewCellCollection cellCollection)
         {
+            cmbStatus.Text = "";
             txtOrderId.Text = cellCollection[0].Value.ToString();
             dtPickerOrder.Value = (DateTime)cellCollection[1].Value;
             cmbStatus.SelectedText = cellCollection[2].Value.ToString();
@@ -230,7 +231,9 @@ namespace SiparisOtomasyonu.WindowsUI
 
         private void btnOrderDetails_Click(object sender, EventArgs e)
         {
+            Form form = Application.OpenForms["MDIForm"];
             OrderDetailForm detailForm = new OrderDetailForm(int.Parse(txtOrderId.Text));
+            detailForm.MdiParent = form;
             detailForm.Show();
         }
 
@@ -275,7 +278,9 @@ namespace SiparisOtomasyonu.WindowsUI
 
         private void btnPayments_Click(object sender, EventArgs e)
         {
+            Form form = Application.OpenForms["MDIForm"];
             PaymentForm paymentForm = new PaymentForm(0, int.Parse(txtOrderId.Text));
+            paymentForm.MdiParent = form;
             paymentForm.Show();
         }
 
@@ -295,5 +300,7 @@ namespace SiparisOtomasyonu.WindowsUI
                 TextboxCustomerClear();
             }
         }
+
+
     }
 }

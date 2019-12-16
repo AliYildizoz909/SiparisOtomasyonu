@@ -133,6 +133,7 @@
             // 
             // dtGridList
             // 
+            this.dtGridList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGridList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridList.Location = new System.Drawing.Point(284, 12);
             this.dtGridList.Name = "dtGridList";

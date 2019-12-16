@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SiparisOtomasyonu.Core.Operations.Abstract;
 using SiparisOtomasyonu.Core.Operations.Helpers;
 using SiparisOtomasyonu.Entities.Entity;
 using SiparisOtomasyonu.Entities.Entity.Abstract;
@@ -11,7 +10,7 @@ using SiparisOtomasyonu.Entities.Entity.Enums;
 
 namespace SiparisOtomasyonu.Core.Operations.Manager
 {
-    public class CreditManager : RepositoryBase<Credit>, IManager
+    public class CreditManager : RepositoryBase<Credit>
     {
         private CustomerManager _customerManager;
         private OrderManager _orderManager;

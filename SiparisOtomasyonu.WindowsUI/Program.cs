@@ -22,7 +22,7 @@ namespace SiparisOtomasyonu.WindowsUI
             {
                 directoryHelper.Create();
             }
-            Application.Run(new CustomerForm());
+            Application.Run(new ItemForm());
         }
     }
 }

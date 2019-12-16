@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnPayments = new System.Windows.Forms.Button();
+            this.txtOrderDetailtemId = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.cmbTax = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,6 +40,7 @@
             this.nudQuantity = new System.Windows.Forms.NumericUpDown();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
+            this.btnItems = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -51,28 +54,11 @@
             this.txtOrderId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dtGridList = new System.Windows.Forms.DataGridView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtItemId = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.btnItemDelete = new System.Windows.Forms.Button();
-            this.btnItemCreate = new System.Windows.Forms.Button();
-            this.btnItemUpdate = new System.Windows.Forms.Button();
-            this.dtGridItem = new System.Windows.Forms.DataGridView();
-            this.txtDescription = new System.Windows.Forms.TextBox();
-            this.txtOrderDetailtemId = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblGetWeight = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblPriceForQuantity = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudWeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridList)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridItem)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -88,6 +74,7 @@
             this.groupBox1.Controls.Add(this.nudQuantity);
             this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.btnCreate);
+            this.groupBox1.Controls.Add(this.btnItems);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
@@ -100,16 +87,25 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtOrderId);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Location = new System.Drawing.Point(12, 227);
+            this.groupBox1.Location = new System.Drawing.Point(12, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(272, 349);
+            this.groupBox1.Size = new System.Drawing.Size(272, 356);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Order Detail info";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 46);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 54;
+            this.label5.Text = "Item id";
+            // 
             // btnPayments
             // 
-            this.btnPayments.Location = new System.Drawing.Point(142, 273);
+            this.btnPayments.Location = new System.Drawing.Point(144, 263);
             this.btnPayments.Name = "btnPayments";
             this.btnPayments.Size = new System.Drawing.Size(111, 31);
             this.btnPayments.TabIndex = 64;
@@ -117,9 +113,17 @@
             this.btnPayments.UseVisualStyleBackColor = true;
             this.btnPayments.Click += new System.EventHandler(this.btnPayments_Click);
             // 
+            // txtOrderDetailtemId
+            // 
+            this.txtOrderDetailtemId.Enabled = false;
+            this.txtOrderDetailtemId.Location = new System.Drawing.Point(87, 46);
+            this.txtOrderDetailtemId.Name = "txtOrderDetailtemId";
+            this.txtOrderDetailtemId.Size = new System.Drawing.Size(169, 20);
+            this.txtOrderDetailtemId.TabIndex = 52;
+            // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(210, 320);
+            this.btnClear.Location = new System.Drawing.Point(210, 327);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(58, 23);
             this.btnClear.TabIndex = 63;
@@ -185,7 +189,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(15, 251);
+            this.btnUpdate.Location = new System.Drawing.Point(20, 263);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(112, 29);
             this.btnUpdate.TabIndex = 31;
@@ -195,7 +199,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(16, 214);
+            this.btnCreate.Location = new System.Drawing.Point(21, 226);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(111, 31);
             this.btnCreate.TabIndex = 30;
@@ -203,9 +207,19 @@
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
+            // btnItems
+            // 
+            this.btnItems.Location = new System.Drawing.Point(144, 298);
+            this.btnItems.Name = "btnItems";
+            this.btnItems.Size = new System.Drawing.Size(112, 28);
+            this.btnItems.TabIndex = 32;
+            this.btnItems.Text = "Add to item";
+            this.btnItems.UseVisualStyleBackColor = true;
+            this.btnItems.Click += new System.EventHandler(this.btnItems_Click);
+            // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(15, 286);
+            this.btnDelete.Location = new System.Drawing.Point(20, 298);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(112, 28);
             this.btnDelete.TabIndex = 32;
@@ -312,166 +326,19 @@
             // 
             // dtGridList
             // 
+            this.dtGridList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGridList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridList.Location = new System.Drawing.Point(290, 228);
+            this.dtGridList.Location = new System.Drawing.Point(290, 12);
             this.dtGridList.Name = "dtGridList";
-            this.dtGridList.Size = new System.Drawing.Size(846, 349);
+            this.dtGridList.Size = new System.Drawing.Size(933, 356);
             this.dtGridList.TabIndex = 37;
             this.dtGridList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridList_CellDoubleClick);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.lblGetWeight);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.lblPriceForQuantity);
-            this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.txtItemId);
-            this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Controls.Add(this.btnItemDelete);
-            this.groupBox4.Controls.Add(this.btnItemCreate);
-            this.groupBox4.Controls.Add(this.btnItemUpdate);
-            this.groupBox4.Controls.Add(this.dtGridItem);
-            this.groupBox4.Controls.Add(this.txtDescription);
-            this.groupBox4.Location = new System.Drawing.Point(12, 12);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(785, 210);
-            this.groupBox4.TabIndex = 39;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Item info";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
-            this.label1.TabIndex = 54;
-            this.label1.Text = "Id";
-            // 
-            // txtItemId
-            // 
-            this.txtItemId.Enabled = false;
-            this.txtItemId.Location = new System.Drawing.Point(87, 30);
-            this.txtItemId.Name = "txtItemId";
-            this.txtItemId.Size = new System.Drawing.Size(166, 20);
-            this.txtItemId.TabIndex = 52;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(12, 56);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(60, 13);
-            this.label15.TabIndex = 55;
-            this.label15.Text = "Description";
-            // 
-            // btnItemDelete
-            // 
-            this.btnItemDelete.Location = new System.Drawing.Point(278, 104);
-            this.btnItemDelete.Name = "btnItemDelete";
-            this.btnItemDelete.Size = new System.Drawing.Size(111, 31);
-            this.btnItemDelete.TabIndex = 56;
-            this.btnItemDelete.Text = "Delete";
-            this.btnItemDelete.UseVisualStyleBackColor = true;
-            this.btnItemDelete.Click += new System.EventHandler(this.btnItemDelete_Click);
-            // 
-            // btnItemCreate
-            // 
-            this.btnItemCreate.Location = new System.Drawing.Point(278, 30);
-            this.btnItemCreate.Name = "btnItemCreate";
-            this.btnItemCreate.Size = new System.Drawing.Size(111, 31);
-            this.btnItemCreate.TabIndex = 56;
-            this.btnItemCreate.Text = "Create";
-            this.btnItemCreate.UseVisualStyleBackColor = true;
-            this.btnItemCreate.Click += new System.EventHandler(this.btnItemCreate_Click);
-            // 
-            // btnItemUpdate
-            // 
-            this.btnItemUpdate.Location = new System.Drawing.Point(278, 67);
-            this.btnItemUpdate.Name = "btnItemUpdate";
-            this.btnItemUpdate.Size = new System.Drawing.Size(108, 31);
-            this.btnItemUpdate.TabIndex = 57;
-            this.btnItemUpdate.Text = "Update";
-            this.btnItemUpdate.UseVisualStyleBackColor = true;
-            this.btnItemUpdate.Click += new System.EventHandler(this.btnItemUpdate_Click);
-            // 
-            // dtGridItem
-            // 
-            this.dtGridItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridItem.Location = new System.Drawing.Point(395, 19);
-            this.dtGridItem.Name = "dtGridItem";
-            this.dtGridItem.Size = new System.Drawing.Size(375, 181);
-            this.dtGridItem.TabIndex = 30;
-            this.dtGridItem.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridItem_CellDoubleClick);
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.Location = new System.Drawing.Point(87, 56);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(166, 52);
-            this.txtDescription.TabIndex = 0;
-            // 
-            // txtOrderDetailtemId
-            // 
-            this.txtOrderDetailtemId.Enabled = false;
-            this.txtOrderDetailtemId.Location = new System.Drawing.Point(87, 46);
-            this.txtOrderDetailtemId.Name = "txtOrderDetailtemId";
-            this.txtOrderDetailtemId.Size = new System.Drawing.Size(169, 20);
-            this.txtOrderDetailtemId.TabIndex = 52;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 46);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
-            this.label5.TabIndex = 54;
-            this.label5.Text = "Item id";
-            // 
-            // lblGetWeight
-            // 
-            this.lblGetWeight.AutoSize = true;
-            this.lblGetWeight.Location = new System.Drawing.Point(165, 120);
-            this.lblGetWeight.Name = "lblGetWeight";
-            this.lblGetWeight.Size = new System.Drawing.Size(19, 13);
-            this.lblGetWeight.TabIndex = 60;
-            this.lblGetWeight.Text = "00";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(99, 120);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(38, 13);
-            this.label9.TabIndex = 61;
-            this.label9.Text = "weight";
-            // 
-            // lblPriceForQuantity
-            // 
-            this.lblPriceForQuantity.AutoSize = true;
-            this.lblPriceForQuantity.Location = new System.Drawing.Point(165, 150);
-            this.lblPriceForQuantity.Name = "lblPriceForQuantity";
-            this.lblPriceForQuantity.Size = new System.Drawing.Size(19, 13);
-            this.lblPriceForQuantity.TabIndex = 58;
-            this.lblPriceForQuantity.Text = "00";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(68, 150);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(91, 13);
-            this.label14.TabIndex = 59;
-            this.label14.Text = "Price For Quantity";
             // 
             // OrderDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1148, 583);
-            this.Controls.Add(this.groupBox4);
+            this.ClientSize = new System.Drawing.Size(1235, 379);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dtGridList);
             this.Name = "OrderDetailForm";
@@ -483,9 +350,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridList)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridItem)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -514,20 +378,8 @@
         private System.Windows.Forms.NumericUpDown nudPrice;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnPayments;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtItemId;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button btnItemDelete;
-        private System.Windows.Forms.Button btnItemCreate;
-        private System.Windows.Forms.Button btnItemUpdate;
-        private System.Windows.Forms.DataGridView dtGridItem;
-        private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtOrderDetailtemId;
-        private System.Windows.Forms.Label lblGetWeight;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lblPriceForQuantity;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnItems;
     }
 }

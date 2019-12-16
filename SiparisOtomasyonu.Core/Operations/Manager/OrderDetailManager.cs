@@ -12,7 +12,6 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
     public class OrderDetailManager : RepositoryBase<OrderDetail>
     {
         private OrderManager _orderManager;
-        private ItemManager _itemManager;
         private OrderDetailManager(PathModel pathModel) : base(pathModel)
         {
         }
@@ -36,15 +35,11 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
         {
             entity.Id = Entities.Count != 0 ? Entities[Entities.Count - 1].Id + 1 : 1;
             _orderManager = OrderManager.CreateAsSingleton(PathHelper.OrderPathModel);
-            _itemManager = ItemManager.CreateAsSingleton(PathHelper.ItemPathModel);
             Order order = _orderManager.Entities.Find(I => I.Id == entity.OrderId);
-            Item item = _itemManager.Entities.Find(I => I.Id == entity.ItemId);
-            if (order != null && item != null)
+            if (order != null)
             {
                 order.OrderDetailIds.Add(entity.Id);
                 _orderManager.Update(order);
-                item.OrderDetails.Add(entity);
-                _itemManager.Update(item);
             }
             return base.Add(entity);
         }
@@ -54,15 +49,12 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
             if (res)
             {
                 _orderManager = OrderManager.CreateAsSingleton(PathHelper.OrderPathModel);
-                _itemManager = ItemManager.CreateAsSingleton(PathHelper.ItemPathModel);
                 Order order = _orderManager.Entities.Find(I => I.Id == orderDetail.OrderId);
-                Item item = _itemManager.Entities.Find(I => I.Id == orderDetail.ItemId);
                 if (order != null)
                 {
                     order.OrderDetailIds.Remove(orderDetail.Id);
                     _orderManager.Update(order);
-                    item.OrderDetails.Remove(orderDetail);
-                    _itemManager.Update(item);
+                   
                 }
                 return base.Delete(Entities.FindIndex(I => I.Id == orderDetail.Id));
             }
@@ -70,7 +62,6 @@ namespace SiparisOtomasyonu.Core.Operations.Manager
         }
         public Result Update(OrderDetail orderDetail)
         {
-
             return UseTryCatch.Use(() =>
             {
                 base.Delete(Entities.FindIndex(I => I.Id == orderDetail.Id));
