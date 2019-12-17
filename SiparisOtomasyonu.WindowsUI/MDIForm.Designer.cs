@@ -30,13 +30,13 @@
         {
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnPaymentManager = new System.Windows.Forms.Button();
             this.btnUserManager = new System.Windows.Forms.Button();
             this.btnItemManager = new System.Windows.Forms.Button();
             this.btnOrderManager = new System.Windows.Forms.Button();
             this.btnAdminForm = new System.Windows.Forms.Button();
             this.btnCustomerManager = new System.Windows.Forms.Button();
-            this.btnPaymentManager = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +59,6 @@
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.IndianRed;
-            this.btnLogin.Enabled = false;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnLogin.Location = new System.Drawing.Point(1549, 7);
             this.btnLogin.Name = "btnLogin";
@@ -68,6 +67,30 @@
             this.btnLogin.Text = "Application Lock";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.White;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnClear.Location = new System.Drawing.Point(1789, 7);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(123, 54);
+            this.btnClear.TabIndex = 0;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnPaymentManager
+            // 
+            this.btnPaymentManager.Enabled = false;
+            this.btnPaymentManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnPaymentManager.Location = new System.Drawing.Point(1288, 7);
+            this.btnPaymentManager.Name = "btnPaymentManager";
+            this.btnPaymentManager.Size = new System.Drawing.Size(255, 54);
+            this.btnPaymentManager.TabIndex = 0;
+            this.btnPaymentManager.Text = "Payment Manager";
+            this.btnPaymentManager.UseVisualStyleBackColor = true;
+            this.btnPaymentManager.Click += new System.EventHandler(this.btnPaymentManager_Click);
             // 
             // btnUserManager
             // 
@@ -128,31 +151,6 @@
             this.btnCustomerManager.Text = "Customer Manager";
             this.btnCustomerManager.UseVisualStyleBackColor = true;
             this.btnCustomerManager.Click += new System.EventHandler(this.btnCustomerManager_Click);
-            // 
-            // btnPaymentManager
-            // 
-            this.btnPaymentManager.Enabled = false;
-            this.btnPaymentManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnPaymentManager.Location = new System.Drawing.Point(1288, 7);
-            this.btnPaymentManager.Name = "btnPaymentManager";
-            this.btnPaymentManager.Size = new System.Drawing.Size(255, 54);
-            this.btnPaymentManager.TabIndex = 0;
-            this.btnPaymentManager.Text = "Payment Manager";
-            this.btnPaymentManager.UseVisualStyleBackColor = true;
-            this.btnPaymentManager.Click += new System.EventHandler(this.btnPaymentManager_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.Color.White;
-            this.btnClear.Enabled = false;
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnClear.Location = new System.Drawing.Point(1789, 7);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(123, 54);
-            this.btnClear.TabIndex = 0;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // MDIForm
             // 

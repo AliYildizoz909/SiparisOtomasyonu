@@ -67,7 +67,12 @@ namespace SiparisOtomasyonu.WindowsUI
                 });
                 if (result.ResultState == ResultState.Success)
                 {
-
+                    Customer customer = _customerManager.Entities.Find(I => I.UserName == userName && I.Password == password);
+                    Form form = Application.OpenForms["MDIForm"];
+                    CustomerMainForm customerMainForm = new CustomerMainForm(customer.Id);
+                    customerMainForm.MdiParent = form;
+                    customerMainForm.Show();
+                    this.Close();
                 }
                 else
                 {

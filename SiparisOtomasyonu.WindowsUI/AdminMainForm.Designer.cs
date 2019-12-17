@@ -93,7 +93,7 @@
             // 
             // dtGridOrderDetail
             // 
-            this.dtGridOrderDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dtGridOrderDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGridOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridOrderDetail.Location = new System.Drawing.Point(267, 49);
             this.dtGridOrderDetail.Name = "dtGridOrderDetail";

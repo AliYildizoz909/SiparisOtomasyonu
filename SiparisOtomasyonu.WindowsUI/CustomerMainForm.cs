@@ -13,17 +13,22 @@ using SiparisOtomasyonu.Entities.Entity;
 
 namespace SiparisOtomasyonu.WindowsUI
 {
-    public partial class AdminMainForm : Form
+    public partial class CustomerMainForm : Form
     {
+        private readonly int _customerId;
         private ItemManager _itemManager;
+        private OrderDetailManager _orderDetailManager;
         private CustomerManager _customerManager;
-        public AdminMainForm()
+        private OrderManager _orderManager;
+        public CustomerMainForm(int customerId)
         {
+            _customerId = customerId;
             InitializeComponent();
             _itemManager = ItemManager.CreateAsSingleton(PathHelper.ItemPathModel);
+            _orderDetailManager = OrderDetailManager.CreateAsSingleton(PathHelper.OrderDetailPathModel);
             _customerManager = CustomerManager.CreateAsSingleton(PathHelper.CustomerPathModel);
+            _orderManager = OrderManager.CreateAsSingleton(PathHelper.OrderPathModel);
         }
-
         private void dtGridItem_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dataGridView = (DataGridView)sender;
@@ -46,77 +51,43 @@ namespace SiparisOtomasyonu.WindowsUI
             lblPriceForQuantity.Text = item.GetPriceForQuantity().ToString();
         }
 
-        private void DataGridFillForOrdetail(int itemId)
-        {
-            dtGridOrderDetail.DataSource = null;
-            dtGridOrderDetail.DataSource = _itemManager.Entities.Find(I => I.Id == itemId).OrderDetails.OrderBy(I => I.Id).ToList();
-        }
-
         private void dtGridOrderDetail_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dataGridView = (DataGridView)sender;
             DataGridViewCellCollection cellCollection = dataGridView.SelectedRows[0].Cells;
             OrderDetailLabelFill(cellCollection);
-            CustomerLabelFill(int.Parse(lblOrderId.Text));
         }
-
-        private void CustomerLabelFill(int orderId)
-        {
-            Customer customer = _customerManager.Entities.Find(I => I.OrderIds.Contains(orderId));
-            lblCustomerId.Text = customer.Id.ToString();
-            lblCustomerName.Text = customer.Name;
-            lblCustomerSurname.Text = customer.Surname;
-            lblCustomerAddress.Text = customer.Address;
-            lblCustomerPassword.Text = customer.Password;
-            lblCustomerUserName.Text = customer.UserName;
-        }
-
         private void OrderDetailLabelFill(DataGridViewCellCollection cellCollection)
         {
             lblOrderDetailId.Text = cellCollection[0].Value.ToString();
 
-            lblOrderId.Text = cellCollection[2].Value.ToString();
             lblQuantity.Text = cellCollection[3].Value.ToString();
-            lblPriceForQuantity.Text = cellCollection[4].Value.ToString();
+            lblPrice.Text = cellCollection[4].Value.ToString();
             lblTaxStatus.Text = cellCollection[5].Value.ToString();
             lblWeight.Text = cellCollection[6].Value.ToString();
             lblSubWeight.Text = cellCollection[7].Value.ToString();
             lblSubTotal.Text = cellCollection[8].Value.ToString();
         }
 
-        private void ItemDataGridFill()
+        private void DataGridFillForOrdetail(int itemId)
         {
-            dtGridItem.DataSource = null;
-            dtGridItem.DataSource = _itemManager.Entities.OrderBy(I => I.Id).ToList();
+            dtGridOrderDetail.DataSource = null;
+            dtGridOrderDetail.DataSource = _orderDetailManager.Entities.Join(_orderManager.Entities.Join(
+                    _customerManager.GetById(_customerId).OrderIds,
+                    order => order.Id, i => i, (order, i) => order), detail => detail.OrderId, order => order.Id,
+                (detail, order) => detail).Where(I => I.ItemId == itemId).ToList();
         }
 
-        private void AdminMainForm_Load(object sender, EventArgs e)
+        private void CustomerMainForm_Load(object sender, EventArgs e)
         {
             ItemDataGridFill();
         }
 
-        private void btnCustomerManager_Click(object sender, EventArgs e)
+        private void ItemDataGridFill()
         {
-            Form form = Application.OpenForms["MDIForm"];
-            CustomerForm customerForm = new CustomerForm();
-            customerForm.MdiParent = form;
-            customerForm.Show();
-        }
+            dtGridItem.DataSource = null;
+            dtGridItem.DataSource = _itemManager.Entities.Join(_orderDetailManager.Entities.Join(_orderManager.Entities.Join(_customerManager.GetById(_customerId).OrderIds, order => order.Id, i => i, (order, i) => order), detail => detail.OrderId, order => order.Id, (detail, order) => detail.ItemId).Distinct(), item => item.Id, i => i, (item, i) => item).ToList();
 
-        private void btnOrderManager_Click(object sender, EventArgs e)
-        {
-            Form form = Application.OpenForms["MDIForm"];
-            OrderDetailForm detailForm = new OrderDetailForm();
-            detailForm.MdiParent = form;
-            detailForm.Show();
-        }
-
-        private void btnItemManager_Click(object sender, EventArgs e)
-        {
-            Form form = Application.OpenForms["MDIForm"];
-            ItemForm itemForm = new ItemForm();
-            itemForm.MdiParent = form;
-            itemForm.Show();
         }
     }
 }

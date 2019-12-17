@@ -133,7 +133,10 @@ namespace SiparisOtomasyonu.WindowsUI
             {
                 if (item is Button)
                 {
-                    item.Enabled = false;
+                    if (item != btnLogin && item != btnClear)
+                    {
+                        item.Enabled = false;
+                    }
                 }
             }
 
