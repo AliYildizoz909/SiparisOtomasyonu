@@ -87,13 +87,13 @@
             this.rdAdmin.Name = "rdAdmin";
             this.rdAdmin.Size = new System.Drawing.Size(94, 17);
             this.rdAdmin.TabIndex = 36;
-            this.rdAdmin.TabStop = true;
             this.rdAdmin.Text = "User Customer";
             this.rdAdmin.UseVisualStyleBackColor = true;
             // 
             // rdCustomer
             // 
             this.rdCustomer.AutoSize = true;
+            this.rdCustomer.Checked = true;
             this.rdCustomer.Location = new System.Drawing.Point(208, 98);
             this.rdCustomer.Name = "rdCustomer";
             this.rdCustomer.Size = new System.Drawing.Size(79, 17);

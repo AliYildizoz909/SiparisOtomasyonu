@@ -33,8 +33,8 @@ namespace SiparisOtomasyonu.WindowsUI
         private void TextboxFill(DataGridViewCellCollection cellCollection)
         {
             txtId.Text = cellCollection[0].Value.ToString();
-            txtPassword.Text = cellCollection[1].Value.ToString();
-            txtUserName.Text = cellCollection[2].Value.ToString();
+            txtPassword.Text = cellCollection[2].Value.ToString();
+            txtUserName.Text = cellCollection[1].Value.ToString();
         }
         private void TextboxClear()
         {
