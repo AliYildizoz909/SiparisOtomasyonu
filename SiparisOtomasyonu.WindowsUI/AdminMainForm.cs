@@ -77,7 +77,7 @@ namespace SiparisOtomasyonu.WindowsUI
 
             lblOrderId.Text = cellCollection[2].Value.ToString();
             lblQuantity.Text = cellCollection[3].Value.ToString();
-            lblPriceForQuantity.Text = cellCollection[4].Value.ToString();
+            lblPrice.Text = cellCollection[4].Value.ToString();
             lblTaxStatus.Text = cellCollection[5].Value.ToString();
             lblWeight.Text = cellCollection[6].Value.ToString();
             lblSubWeight.Text = cellCollection[7].Value.ToString();
